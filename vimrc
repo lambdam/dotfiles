@@ -40,6 +40,7 @@ NeoBundle 'bronson/vim-trailing-whitespace.git'
 NeoBundle 'terryma/vim-multiple-cursors.git'
 NeoBundle 'scrooloose/nerdcommenter.git'
 NeoBundle 'Raimondi/delimitMate.git'
+NeoBundle 'kchmck/vim-coffee-script.git'
 
 NeoBundle 'tomasr/molokai.git'
 
