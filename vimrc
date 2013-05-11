@@ -41,6 +41,11 @@ NeoBundle 'terryma/vim-multiple-cursors.git'
 NeoBundle 'scrooloose/nerdcommenter.git'
 NeoBundle 'Raimondi/delimitMate.git'
 NeoBundle 'kchmck/vim-coffee-script.git'
+NeoBundle 'mileszs/ack.vim.git'
+NeoBundle 'tyok/nerdtree-ack.git'
+NeoBundle 'LStinson/TagmaBufMgr.git'
+"NeoBundle 'fholgado/minibufexpl.vim.git'
+NeoBundle 'tpope/vim-haml.git'
 
 NeoBundle 'tomasr/molokai.git'
 
