@@ -122,6 +122,34 @@ colorscheme molokai
 autocmd vimenter * if !argc() | NERDTree | endif
 " Close VIM if NERDTree is the last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-map <C-n> :NERDTreeToggle<CR>
+map <C-b> :NERDTreeToggle<CR>
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CtrlP
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:ctrlp_custom_ignore = { 'dir': 'node_modules\|tmp' }
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Shortcuts
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"" Buffers
+nmap <Tab> :bnext<CR>
+nmap <S-Tab> :bprevious<CR>
+
+"" Windows
+nmap <C-Left> <C-W><Left>
+nmap <C-Right> <C-W><Right>
+nmap <C-Up> <C-W><Up>
+nmap <C-Down> <C-W><Down>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntax highlighting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+au BufNewFile,BufRead *.ejs set filetype=html
+au BufNewFile,BufRead *.hamlc set filetype=haml
 
