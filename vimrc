@@ -92,6 +92,9 @@ set history=1000
 "   set clipboard=unnamed
 " endif
 
+" Change buffer without saving
+set hidden
+
 set expandtab
 set shiftwidth=2
 set tabstop=2
@@ -137,8 +140,8 @@ let g:ctrlp_custom_ignore = { 'dir': 'node_modules\|tmp' }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "" Buffers
-nmap <Tab> :bnext<CR>
-nmap <S-Tab> :bprevious<CR>
+nmap <Tab> :bnext!<CR>
+nmap <S-Tab> :bprevious!<CR>
 
 "" Windows
 nmap <C-Left> <C-W><Left>
