@@ -58,7 +58,7 @@ NeoBundleCheck
 
 syntax on
 
-" set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
+set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
 
 " Disable error bell
 set noerrorbells visualbell t_vb=
