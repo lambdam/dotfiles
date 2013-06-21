@@ -1,5 +1,10 @@
 require 'rake'
 
+def command?(name)
+  `which #{name}`
+  $?.success?
+end
+
 desc 'create links in home directory'
 task 'links' do
   Rake::Task['links:vim'].execute
@@ -8,6 +13,10 @@ end
 
 desc 'create links for vim'
 task 'links:vim' do
+  unless command? 'ruby'
+    puts 'Please install ruby'
+    break
+  end
   cwd = Dir.pwd
   # First elem is source
   # Second is destination
