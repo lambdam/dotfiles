@@ -99,6 +99,8 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
+" make backspace work like most other apps
+set backspace=2
 
 " 80 chars code
 if exists('+colorcolumn')
@@ -121,6 +123,7 @@ colorscheme molokai
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "" NERDTree
+let NERDTreeChDirMode = 2
 " Auto open on startup
 autocmd vimenter * if !argc() | NERDTree | endif
 " Close VIM if NERDTree is the last window
