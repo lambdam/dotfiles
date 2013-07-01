@@ -142,3 +142,5 @@ PATH=$PATH:$HOME/.opam/system/bin
 # TMUX
 alias tmux="tmux -2"
 
+# Cabal
+PATH=$PATH:$HOME/.cabal/bin
