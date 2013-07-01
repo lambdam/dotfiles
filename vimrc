@@ -109,6 +109,10 @@ else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
+" smartase for insensitive search by default
+set smartcase
+set ic
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Color Scheme 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
