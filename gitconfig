@@ -1,0 +1,61 @@
+[user]
+    name = Damien Ragoucy
+    email = damien.ragoucy@af83.com
+[core]
+    # autocrlf = input
+    # safecrlf = true
+
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+    undo = reset --soft HEAD^
+    t = log --graph --decorate --pretty=oneline --abbrev-commit
+    d = diff
+    unstage = reset HEAD --
+
+[push]
+    default = tracking
+
+[diff]
+    color = true
+
+[color]
+  branch      = auto
+  diff        = auto
+  status      = auto
+  interactive = auto
+  ui          = auto
+  pager       = true
+
+[color "branch"]
+  current = yellow reverse
+  local   = yellow
+  remote  = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old  = red bold
+  new  = green bold
+
+[color "status"]
+  added     = yellow
+  changed   = green
+  untracked = cyan
+
+[branch]
+  ; When a new branch is created with git branch or git checkout that tracks
+  ; another branch, this variable tells git to set up pull to rebase instead of
+  ; merge (see "branch.<name>.rebase"). When never, rebase is never automatically
+  ; set to true. When local, rebase is set to true for tracked branches of other
+  ; local branches. When remote, rebase is set to true for tracked branches of
+  ; remote-tracking branches. When always, rebase will be set to true for all
+  ; tracking branches.
+  autosetuprebase = always
+[core]
+  excludesfile = /Users/dam/.gitignore_global

@@ -9,6 +9,7 @@ desc 'create links in home directory'
 task 'links' do
   Rake::Task['links:vim'].execute
   Rake::Task['links:zsh'].execute
+  Rake::Task['links:git'].execute
 end
 
 desc 'create links for vim'
@@ -38,4 +39,12 @@ desc 'create links for ZSH'
 task 'links:zsh' do
   system "rm -rf ~/.zshrc"
   system "ln -s #{Dir.pwd}/zshrc ~/.zshrc"
+end
+
+desc 'create links for git'
+task 'links:git' do
+  pwd = Dir.pwd
+  system "rm ~/.gitconfig ~/.gitignore_global"
+  system "ln -s #{pwd}/gitconfig ~/.gitconfig"
+  system "ln -s #{pwd}/gitignore_global ~/.gitignore_global"
 end
