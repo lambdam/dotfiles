@@ -9,7 +9,7 @@ set nocompatible
 " Check on https://github.com/Shougo/neobundle.vim
 
 if has('vim_starting')
- set runtimepath+=~/.vim/bundle/neobundle.vim/
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
@@ -44,8 +44,10 @@ NeoBundle 'kchmck/vim-coffee-script.git'
 NeoBundle 'mileszs/ack.vim.git'
 NeoBundle 'tyok/nerdtree-ack.git'
 "NeoBundle 'LStinson/TagmaBufMgr.git'
-NeoBundle 'fholgado/minibufexpl.vim.git'
+"NeoBundle 'fholgado/minibufexpl.vim.git'
 NeoBundle 'tpope/vim-haml.git'
+NeoBundle 'jtratner/vim-flavored-markdown.git'
+NeoBundle 'kien/rainbow_parentheses.vim.git'
 
 NeoBundle 'tomasr/molokai.git'
 
@@ -113,6 +115,9 @@ endif
 set smartcase
 set ic
 
+" Man pages
+runtime! ftplugin/man.vim
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Color Scheme 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -162,4 +167,17 @@ nmap <C-Down> <C-W><Down>
 
 au BufNewFile,BufRead *.ejs set filetype=html
 au BufNewFile,BufRead *.hamlc set filetype=haml
+au BufNewFile,BufRead *.md set filetype=ghmarkdown
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Buffer Gator
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nmap <Leader>B :BuffergatorToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Rainbow parenthesis
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" TODO
