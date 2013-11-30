@@ -29,7 +29,7 @@ ZSH_THEME="gnzh"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew rvm rails rails3 rake npm)
+plugins=(git brew rvm gem rake npm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -49,9 +49,6 @@ alias ll="ls -halF"
 alias ramdamdam="ssh root@37.26.241.6"
 alias processus='ps -e -o"pid ppid user ucomm"'
 export EDITOR=vim
-
-# Sublime Text 2
-alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
 
 # aeruti
 # alias aeruti="cd /Volumes/aeruti"
@@ -112,9 +109,6 @@ alias is-nginx-running="processus | grep nginx"
 # alias gst="git status"
 # alias glog="git log"
 
-# RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 # NVM
 source ~/.nvm/nvm.sh
 # [[ -r $NVM_DIR/nvm.sh ]] && . $NVM_DIR/nvm.sh
@@ -131,6 +125,7 @@ export GOPATH=~/dev/go/test
 # Canal
 export CANAL_ENV=tnt
 alias gd="grunt deploy"
+alias gdo="grunt deploy:only"
 alias gr="grunt restart"
 
 
@@ -144,3 +139,9 @@ alias tmux="tmux -2"
 
 # Cabal
 PATH=$PATH:$HOME/.cabal/bin
+
+# RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# Emacs
+alias gemacs='emacsclient -c -n -a "" -F "((fullscreen . maximized))"'
