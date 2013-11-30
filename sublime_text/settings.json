@@ -1,0 +1,20 @@
+{
+  "color_scheme": "Packages/Color Scheme - Dam/Monokai Bright.tmTheme",
+  "draw_white_space": "all",
+  "font_size": 14.0,
+  "high_visibility_color": "__bracket__",
+  "high_visibility_style": "outline",
+  "ignored_packages":
+  [
+    "Vintage"
+  ],
+  "rulers":
+  [
+    80
+  ],
+  "show_minimap": false,
+  "tab_size": 2,
+  "translate_tabs_to_spaces": true,
+  "use_simple_full_screen": true,
+  "word_wrap": true
+}
