@@ -47,7 +47,15 @@ NeoBundle 'tyok/nerdtree-ack.git'
 "NeoBundle 'fholgado/minibufexpl.vim.git'
 NeoBundle 'tpope/vim-haml.git'
 NeoBundle 'jtratner/vim-flavored-markdown.git'
-NeoBundle 'kien/rainbow_parentheses.vim.git'
+NeoBundle 'dbarsam/vim-rainbow-parentheses.git'
+NeoBundle 'yegappan/grep.git'
+NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'Lokaltog/vim-easymotion.git'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'briancollins/vim-jst.git'
+NeoBundle 'majutsushi/tagbar.git'
+
+NeoBundle 'elixir-lang/vim-elixir.git'
 
 NeoBundle 'tomasr/molokai.git'
 
@@ -99,7 +107,7 @@ set hidden
 
 set expandtab
 set shiftwidth=2
-set tabstop=2
+set tabstop=4
 set softtabstop=2
 " make backspace work like most other apps
 set backspace=2
@@ -179,5 +187,11 @@ nmap <Leader>B :BuffergatorToggle<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Rainbow parenthesis
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " TODO
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ack | Ag
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
