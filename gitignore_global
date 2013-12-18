@@ -51,3 +51,8 @@ Thumbs.db
 # Node JS #
 ###########
 /node_modules
+
+################
+# Sublime Text #
+################
+sftp-config.json
