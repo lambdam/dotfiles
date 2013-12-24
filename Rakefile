@@ -23,7 +23,6 @@ task 'links:vim' do
   # Second is destination
   links = [
     %w(vimrc .vimrc),
-    %w(vim .vim),
     %w(gvimrc .gvimrc)
   ]
   # Create vim folder if doesn't exist
