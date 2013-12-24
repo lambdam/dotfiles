@@ -54,6 +54,7 @@ NeoBundle 'Lokaltog/vim-easymotion.git'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'briancollins/vim-jst.git'
 NeoBundle 'majutsushi/tagbar.git'
+NeoBundle 'tomtom/indentfolds_vim.git'
 
 NeoBundle 'elixir-lang/vim-elixir.git'
 
@@ -93,7 +94,7 @@ set mousehide
 set showmatch
 " set incsearch
 " set ignorecase
-" set nowrap
+set nowrap
 set autoindent
 set history=1000
 " if has("unnamedplus")
@@ -168,6 +169,15 @@ nmap <C-Left> <C-W><Left>
 nmap <C-Right> <C-W><Right>
 nmap <C-Up> <C-W><Up>
 nmap <C-Down> <C-W><Down>
+
+" Move screen one line down
+nmap <C-j> <C-e>
+" Move screen one line up
+nmap <C-k> <C-y>
+" Move screen half a screen down
+nmap <S-j> <C-d>
+" Move screen half a screen up
+nmap <S-k> <C-u>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax highlighting
