@@ -35,6 +35,10 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
+################################################################################
+# Exports
+################################################################################
+
 # Homebrew
 export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
 # export PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
@@ -43,76 +47,30 @@ export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
 # fi
 # fpath=(/usr/local/share/zsh-completions $fpath)
 
+export EDITOR=vim
+
+
+################################################################################
+# Aliases
+################################################################################
 
 # Commandes générales
 alias ll="ls -halF"
-alias ramdamdam="ssh root@37.26.241.6"
 alias processus='ps -e -o"pid ppid user ucomm"'
-export EDITOR=vim
+alias vlcc="vlc -I ncurses"
 
-# aeruti
-# alias aeruti="cd /Volumes/aeruti"
-# alias doctrine-mongodb-generate-documents-administrateur="php ./app/console doctrine:mongodb:generate:documents ArtisticartAdministrateurBundle"
-# alias ccsf="rm -rf /Volumes/aeruti/app/cache/*"
-# alias assets_aeruti_watch="php ./app/console assetic:dump --watch"
-# alias assets_aeruti_prod="php ./app/console assetic:dump --env=prod --no-debug"
-# alias assets_aeruti_dev="php ./app/console assetic:dump --env=dev"
+# Radios
+alias france-inter="mplayer http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u"
+alias france-culture="mplayer http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u"
+alias france-inter-vlc="vlcc http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u"
+alias france-culture-vlc="vlcc http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u"
 
-
-# Web2py Osakasalon
-# alias w2p="cd /Users/damienragoucy/Documents/Informatique/Web/web2py/osakasalon.web2py;python web2py.py"
-# alias w2p_dossier="cd /Users/damienragoucy/Documents/Informatique/Web/web2py/osakasalon.web2py"
-
-
-# Nginx
-#alias nginx_stop="pidof nginx | xargs kill"
-#alias nginx_restart="pidof nginx | xargs kill;nginx"
-alias nginx_stop="nginx -s quit"
-alias nginx_restart="nginx -s quit;nginx"
-alias is-nginx-running="processus | grep nginx"
-
-# sf2
-# alias sf2="cd /Users/damienragoucy/Documents/Informatique/Web/Symfony2/sf2"
-# alias sf2_cc="rm -rf /Users/damienragoucy/Documents/Informatique/Web/Symfony2/sf2/site.osakasalon.com-app/cache/*;rm -rf /Users/damienragoucy/Documents/Informatique/Web/Symfony2/sf2/site.ramdamdam.fr-app/cache/*"
-
-# Node.js
-#export NODE_PATH='/usr/local/lib/node_modules'
-#export PATH="/usr/local/share/npm/bin:$PATH"
-
-# Tests PHP
-# alias testsPHP_dossier="cd /Users/damienragoucy/Documents/Informatique/Web/Nginx/NginxDocs/testsPHP"
-
-# Rails Ramdamdam
-# alias ramdamdam_rails="cd /Users/damienragoucy/Documents/Informatique/Web/Rails/ramdamdam"
-
-# Setting PATH for MacPython 2.5
-# The orginal version is saved in .bash_profile.pysave
-#PATH="/Library/Frameworks/Python.framework/Versions/Current/bin:${PATH}"
-#export PATH
-#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.5
-
-#AF83
-# alias repertoire-AF83="cd /Users/damienragoucy/Documents/AF83"
-
-
-# Colorisation
-# export CLICOLOR=1
-# export LSCOLORS=ExFxCxDxBxegedabagacad
-
-# Alias GIT
-# source ~/.shell-imports/git-completion.sh
-#export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
-# export PS1='\[\033[0;37m\]\u@\h:\[\033[0;33m\]\W\[\033[0m\]\[\033[1;32m\]$(__git_ps1)\[\033[0m\] \$ '
-# alias gco='git co'
-# alias gci='git ci'
-# alias grb='git rb'
-# alias gst="git status"
-# alias glog="git log"
+################################################################################
+# Modules
+################################################################################
 
 # NVM
-source ~/.nvm/nvm.sh
-# [[ -r $NVM_DIR/nvm.sh ]] && . $NVM_DIR/nvm.sh
-source ~/.nvm/bash_completion
+[[ -s "$HOME/.nvm/nvm.sh" ]] && source ~/.nvm/nvm.sh
 
 alias gitx="/Applications/GitX.app/Contents/MacOS/GitX"
 
@@ -145,3 +103,5 @@ PATH=$PATH:$HOME/.cabal/bin
 
 # Emacs
 alias gemacs='emacsclient -c -n -a "" -F "((fullscreen . maximized))"'
+
+export TERM="xterm-256color"
