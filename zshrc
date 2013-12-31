@@ -36,28 +36,36 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 
 ################################################################################
+# Detect system
+################################################################################
+
+platform=`uname -s`
+if [[ "$platform" == "Darwin" ]]; then
+  CURRENTOS="MACOS"
+elif [[ `expr substr $platform 1 5` == "Linux" ]]; then
+  CURRENTOS="LINUX"
+fi
+
+################################################################################
 # Exports
 ################################################################################
 
-# Homebrew
-export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
-# export PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
-# if [ -f $(brew --prefix)/etc/bash_completion ]; then
-#   . $(brew --prefix)/etc/bash_completion
-# fi
-# fpath=(/usr/local/share/zsh-completions $fpath)
-
 export EDITOR=vim
-
+export TERM="xterm-256color"
 
 ################################################################################
 # Aliases
 ################################################################################
 
-# Commandes générales
+# General
 alias ll="ls -halF"
 alias processus='ps -e -o"pid ppid user ucomm"'
+
+# VLC
 alias vlcc="vlc -I ncurses"
+
+# Emacs
+alias gemacs='emacsclient -c -n -a "" -F "((fullscreen . maximized))"'
 
 # Radios
 alias france-inter="mplayer -playlist http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u"
@@ -65,43 +73,41 @@ alias france-culture="mplayer -playlist http://www.tv-radio.com/station/france_c
 alias france-inter-vlc="vlcc http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u"
 alias france-culture-vlc="vlcc http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u"
 
+# TMUX
+alias tmux="tmux -2"
+
 ################################################################################
-# Modules
+# Per program
 ################################################################################
+
+# RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# Homebrew
+if [[ "$CURRENTOS" == "MACOS" ]]; then
+  export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
+  source `brew --prefix`/etc/profile.d/z.sh
+fi
 
 # NVM
 [[ -s "$HOME/.nvm/nvm.sh" ]] && source ~/.nvm/nvm.sh
 
-alias gitx="/Applications/GitX.app/Contents/MacOS/GitX"
-
-source `brew --prefix`/etc/profile.d/z.sh
-
 # Go
-source ~/.shell-imports/go-completions/_go
-export GOPATH=~/dev/go/test
-
-# Canal
-export CANAL_ENV=tnt
-alias gd="grunt deploy"
-alias gdo="grunt deploy:only"
-alias gr="grunt restart"
-
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+if which go >/dev/null; then
+  export GOPATH=~/dev/go/test
+fi
 
 # OPAM
-PATH=$PATH:$HOME/.opam/system/bin
-
-# TMUX
-alias tmux="tmux -2"
+[[ -d ~/.opam ]] && PATH=$PATH:$HOME/.opam/system/bin
 
 # Cabal
-PATH=$PATH:$HOME/.cabal/bin
+# PATH=$PATH:$HOME/.cabal/bin
 
-# RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+################################################################################
+# Per computer
+################################################################################
 
-# Emacs
-alias gemacs='emacsclient -c -n -a "" -F "((fullscreen . maximized))"'
-
-export TERM="xterm-256color"
+if [[ -s ~/.zshrc_specific ]]; then
+  source ~/.zshrc_specific
+fi
