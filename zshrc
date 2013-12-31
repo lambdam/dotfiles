@@ -60,8 +60,8 @@ alias processus='ps -e -o"pid ppid user ucomm"'
 alias vlcc="vlc -I ncurses"
 
 # Radios
-alias france-inter="mplayer http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u"
-alias france-culture="mplayer http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u"
+alias france-inter="mplayer -playlist http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u"
+alias france-culture="mplayer -playlist http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u"
 alias france-inter-vlc="vlcc http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u"
 alias france-culture-vlc="vlcc http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u"
 
