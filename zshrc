@@ -76,6 +76,10 @@ alias france-culture-vlc="vlcc http://www.tv-radio.com/station/france_culture_mp
 # TMUX
 alias tmux="tmux -2"
 
+# youtube-dl
+alias youtube-dl-best="youtube-dl --extract-audio --audio-format best --audio-quality 0"
+alias youtube-dl-mp4="youtube-dl --format mp4 --max-quality mp4  --extract-audio --audio-format best --audio-quality 0"
+
 ################################################################################
 # Per program
 ################################################################################
