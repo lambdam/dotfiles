@@ -62,5 +62,6 @@
   ; remote-tracking branches. When always, rebase will be set to true for all
   ; tracking branches.
   autosetuprebase = always
+
 [core]
-  excludesfile = /Users/dam/.gitignore_global
+  excludesfile = ~/.gitignore_global
