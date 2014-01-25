@@ -29,7 +29,7 @@ CASE_SENSITIVE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew rvm gem rake npm)
+plugins=(git brew rvm gem rake npm grunt)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -62,6 +62,9 @@ alias ll="ls -halF"
 alias processus='ps -e -o"pid ppid user ucomm"'
 
 # VLC
+if [[ "$CURRENTOS" == "MACOS" ]]; then
+  alias vlc="/Applications/VLC.app/Contents/MacOS/VLC"
+fi
 alias vlcc="vlc -I ncurses"
 
 # Emacs
@@ -79,6 +82,14 @@ alias tmux="tmux -2"
 # youtube-dl
 alias youtube-dl-best="youtube-dl --extract-audio --audio-format best --audio-quality 0"
 alias youtube-dl-mp4="youtube-dl --format mp4 --max-quality mp4  --extract-audio --audio-format best --audio-quality 0"
+alias youtube-dl-mp4-video="youtube-dl --format mp4 --max-quality mp4"
+alias youtube-dl-formats="youtube-dl -F"
+alias youtube-dl-free-video="youtube-dl --prefer-free-formats"
+
+# Inkscape on Mac
+if [[ "$CURRENTOS" == "MACOS" ]]; then
+  alias inkscape="/Applications/Inkscape.app/Contents/Resources/bin/inkscape"
+fi
 
 ################################################################################
 # Per program
@@ -114,4 +125,8 @@ fi
 
 if [[ -s ~/.zshrc_specific ]]; then
   source ~/.zshrc_specific
+fi
+
+if [[ "$CURRENTOS" == "MACOS" ]]; then
+  PATH=$PATH:/Users/dam/local/bin
 fi
