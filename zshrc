@@ -29,7 +29,7 @@ CASE_SENSITIVE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew rvm gem rake npm grunt)
+plugins=(git brew rvm gem rake npm grunt golang nyan)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,9 +109,13 @@ fi
 [[ -s "$HOME/.nvm/nvm.sh" ]] && source ~/.nvm/nvm.sh
 
 # Go
-if which go >/dev/null; then
-  export GOPATH=~/dev/go/test
+# if which go >/dev/null; then
+# fi
+if [[ ! -f ~/go ]]; then
+  mkdir -p ~/go/bin
 fi
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 # OPAM
 [[ -d ~/.opam ]] && PATH=$PATH:$HOME/.opam/system/bin
