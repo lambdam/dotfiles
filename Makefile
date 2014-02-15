@@ -2,7 +2,7 @@ default:
 	echo "Select a task"
 
 links:
-	sh tasks/links.sh
+	sh _tasks/links.sh
 
 homebrew:
-	brew list > ./init/homebrew_list
+	brew list > ./_init/homebrew_list
