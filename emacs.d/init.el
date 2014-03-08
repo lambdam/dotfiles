@@ -1,5 +1,5 @@
 ;; Turn off mouse interface early in startup to avoid momentary display
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
@@ -17,11 +17,12 @@
 (load custom-file)
 
 ;; Display line number
-;; (global-linum-mode t)
-;; (setq linum-format "%d")
+(global-linum-mode t)
+(setq linum-format "%d")
+;; (setq linum-format "%4d \u2502 ")
 
 ;; Display line number
-(setq column-number-mode t)
+;; (setq column-number-mode t)
 
 ;; Evil mode
 (evil-mode 1)
@@ -53,3 +54,16 @@
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+;; emacs-smooth-scrolling.el
+(setq scroll-step 1)
+(setq scroll-conservatively 1000)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-follow-mouse t)
+
+;; disable ring bell
+(setq ring-bell-function 'ignore)
+
+;; Autocomplete
+(global-auto-complete-mode t)
