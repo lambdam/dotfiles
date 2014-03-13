@@ -1,3 +1,7 @@
+################################################################################
+# Oh My ZSH config
+################################################################################
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -122,6 +126,11 @@ export PATH=$PATH:$GOPATH/bin
 
 # Cabal
 # PATH=$PATH:$HOME/.cabal/bin
+
+# Racket
+if [[ -d /Applications/Racket\ v6.0/bin ]]; then
+  export PATH="$PATH:/Applications/Racket v6.0/bin"
+fi
 
 ################################################################################
 # Per computer
