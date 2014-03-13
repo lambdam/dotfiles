@@ -9,6 +9,19 @@
 ;; Auto revert (~ reload modified files)
 (global-auto-revert-mode t)
 
+;; Install extensions if they're missing
+;; (defun init--install-packages ()
+;;   (packages-install
+;;    '(ag auto-complete dired+ ecb elixir-mix elixir-mode evil flx-ido flx fuzzy git-gutter-fringe+ fringe-helper git-gutter+ goto-chg helm ido-ubiquitous magit git-rebase-mode git-commit-mode markdown-mode+ markdown-mode monokai-theme multiple-cursors popup projectile pkg-info epl dash racket-mode rainbow-delimiters s smex smooth-scroll smooth-scrolling sr-speedbar undo-tree)
+;;    ))
+
+;; (condition-case nil
+;;     (init--install-packages)
+;;   (error
+;;    (package-refresh-contents)
+;;    (init--install-packages)))
+
+;; Initialize packages
 (require 'package)
 (package-initialize)
 
