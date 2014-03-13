@@ -102,3 +102,6 @@
  scroll-margin 0
  scroll-conservatively 100000
  scroll-preserve-screen-position 1)
+
+;; Use Ibuffer instead of Buffer List
+(global-set-key (kbd "C-x C-b") 'ibuffer)
