@@ -56,3 +56,8 @@ Thumbs.db
 # Sublime Text #
 ################
 sftp-config.json
+
+################
+# Emacs
+################
+.projectile
