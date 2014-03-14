@@ -1,3 +1,58 @@
+(require 'package)
+
+(defvar dam-packages
+  '(ag
+    auto-complete
+    dired+
+    ecb
+    elixir-mix
+    elixir-mode
+    evil
+    flx-ido
+    flx
+    fuzzy
+    git-gutter-fringe+
+    git-gutter+
+    helm
+    ido-ubiquitous
+    magit
+    markdown-mode+
+    monokai-theme
+    multiple-cursors
+    projectile
+    racket-mode
+    rainbow-delimiters
+    smex
+    smooth-scroll
+    smooth-scrolling
+    undo-tree)
+  "Packages any decent baboon would use.")
+
+(defun dam-install-packages ()
+  "Installs packages used in this configuration"
+  (interactive)
+  (condition-case nil
+      (progn
+        (package-initialize)
+        (message "%s" "Refreshing packages")
+        (package-refresh-contents)
+        (message "%s" " Done")
+        (mapc
+         (lambda (package)
+           (or (package-installed-p package)
+               (package-install package)))
+         dam-packages))
+    (error
+     (message "%s" "Error on packages installation"))))
+
+;; Set up load path
+(add-to-list 'load-path user-emacs-directory)
+
+;; Keep emacs Custom-settings in separate file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(package-initialize)
+(load custom-file)
+
 ;; Turn off mouse interface early in startup to avoid momentary display
 ;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -9,28 +64,9 @@
 ;; Auto revert (~ reload modified files)
 (global-auto-revert-mode t)
 
-;; Install extensions if they're missing
-;; (defun init--install-packages ()
-;;   (packages-install
-;;    '(ag auto-complete dired+ ecb elixir-mix elixir-mode evil flx-ido flx fuzzy git-gutter-fringe+ fringe-helper git-gutter+ goto-chg helm ido-ubiquitous magit git-rebase-mode git-commit-mode markdown-mode+ markdown-mode monokai-theme multiple-cursors popup projectile pkg-info epl dash racket-mode rainbow-delimiters s smex smooth-scroll smooth-scrolling sr-speedbar undo-tree)
-;;    ))
-
-;; (condition-case nil
-;;     (init--install-packages)
-;;   (error
-;;    (package-refresh-contents)
-;;    (init--install-packages)))
-
-;; Initialize packages
-(require 'package)
-(package-initialize)
-
-;; Keep emacs Custom-settings in separate file
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
-
 ;; Display line number
 (global-linum-mode t)
+
 ;; (setq linum-format "%d")
 ;; (setq linum-format "%4d \u2502 ")
 
