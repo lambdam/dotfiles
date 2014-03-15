@@ -15,6 +15,7 @@
     git-gutter+
     helm
     ido-ubiquitous
+    ido-vertical-mode
     magit
     markdown-mode+
     monokai-theme
@@ -97,10 +98,12 @@
 (require 'ido)
 (require 'ido-ubiquitous)
 (require 'flx-ido)
+(require 'ido-vertical-mode)
 (setq ido-enable-flex-matching t
       ido-use-virtual-buffers t)
 (ido-mode +1)
 (ido-ubiquitous-mode +1)
+(ido-vertical-mode +1)
 
 ;; SMEX
 (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
