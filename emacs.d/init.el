@@ -157,3 +157,6 @@
 
 ;; Use Ibuffer instead of Buffer List
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+;; ECB
+(setq ecb-tip-of-the-day nil)
