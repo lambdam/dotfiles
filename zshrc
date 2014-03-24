@@ -33,7 +33,7 @@ CASE_SENSITIVE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew rvm gem rake npm grunt golang nyan)
+plugins=(git brew rbenv gem rake npm grunt golang nyan)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,10 +99,6 @@ fi
 # Per program
 ################################################################################
 
-# RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
 # Homebrew
 if [[ "$CURRENTOS" == "MACOS" ]]; then
   export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
@@ -143,3 +139,10 @@ fi
 if [[ "$CURRENTOS" == "MACOS" ]]; then
   PATH=$PATH:/Users/dam/local/bin
 fi
+
+################################################################################
+# RBenv
+################################################################################
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
