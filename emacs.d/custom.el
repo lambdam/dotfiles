@@ -9,7 +9,6 @@
  '(custom-safe-themes (quote ("a0be8cc2d04108146aa14c493071b88578157a11bd2ef0d85e3ca34b5f2205c5" "338f622cba1f52523b57dddbb6ec255196ba1dbfce490aa2fed5ce0b038ce9af" "7f2b040545a8795c441aaab8592dc82219be5c545394aa44dac5a3ae551d5f09" "c6a6b4d59dc53d407432e4f936c49bf747e304683cc357abe32398af7c6dea33" "73fe242ddbaf2b985689e6ec12e29fab2ecd59f765453ad0e93bc502e6e478d6" "0e121ff9bef6937edad8dfcff7d88ac9219b5b4f1570fd1702e546a80dba0832" default)))
  '(ecb-layout-name "left13")
  '(ecb-options-version "2.40")
- '(ecb-source-path (quote (("/Users/dam/af83/canal/webapp" "webappR7"))))
  '(ecb-windows-width 0.15)
  '(fringe-mode (quote (4 . 0)) nil (fringe))
  '(global-whitespace-mode t)
