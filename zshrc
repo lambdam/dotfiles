@@ -95,6 +95,9 @@ if [[ "$CURRENTOS" == "MACOS" ]]; then
   alias inkscape="/Applications/Inkscape.app/Contents/Resources/bin/inkscape"
 fi
 
+# Bundle
+alias b="bundle exec"
+
 ################################################################################
 # Per program
 ################################################################################
