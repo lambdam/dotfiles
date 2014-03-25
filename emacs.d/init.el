@@ -160,3 +160,12 @@
 
 ;; ECB
 (setq ecb-tip-of-the-day nil)
+
+;; Full screen
+(when (or
+       (eq system-type 'gnu)
+       (eq system-type 'gnu/linux))
+  (defun switch-full-screen ()
+    (interactive)
+    (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
+  (global-set-key [f11] 'switch-full-screen))
