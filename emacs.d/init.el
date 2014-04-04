@@ -3,6 +3,7 @@
 (defvar dam-packages
   '(ag
     auto-complete
+    closure-mode
     dired+
     ecb
     elixir-mix
@@ -11,8 +12,10 @@
     flx-ido
     flx
     fuzzy
+    fullscreen-mode
     git-gutter-fringe+
     git-gutter+
+    haml-mode
     helm
     ido-ubiquitous
     ido-vertical-mode
@@ -23,11 +26,13 @@
     projectile
     racket-mode
     rainbow-delimiters
+    sass-mode
     smex
     smooth-scroll
     smooth-scrolling
-    undo-tree)
-  "Packages any decent baboon would use.")
+    undo-tree
+    yaml-mode)
+  "Dam packages")
 
 (defun dam-install-packages ()
   "Installs packages used in this configuration"
@@ -139,7 +144,7 @@
 (toggle-diredp-find-file-reuse-dir 1)
 
 ;; Font size
-(set-face-attribute 'default nil :height 130)
+(set-face-attribute 'default nil :height 110)
 
 ;; Multiple cursors
 ;; (setq multiple-cursors-map (make-sparse-keymap))
@@ -165,7 +170,8 @@
 (when (or
        (eq system-type 'gnu)
        (eq system-type 'gnu/linux))
-  (defun switch-full-screen ()
-    (interactive)
-    (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
-  (global-set-key [f11] 'switch-full-screen))
+  (global-set-key [f11] 'fullscreen-mode-fullscreen-toggle)
+  (global-set-key (kbd "<menu>") 'smex))
+
+;; ClojureScript
+(add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
