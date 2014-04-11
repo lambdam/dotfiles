@@ -53,6 +53,8 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'briancollins/vim-jst.git'
 NeoBundle 'majutsushi/tagbar.git'
 NeoBundle 'tomtom/indentfolds_vim.git'
+NeoBundle 'rking/ag.vim.git'
+NeoBundle 'taiansu/nerdtree-ag.git'
 
 NeoBundle 'elixir-lang/vim-elixir.git'
 
