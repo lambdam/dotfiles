@@ -173,5 +173,5 @@
   (global-set-key [f11] 'fullscreen-mode-fullscreen-toggle)
   (global-set-key (kbd "<menu>") 'smex))
 
-;; ClojureScript
-(add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
+;; Load syntaxes file (associate extensions with major modes)
+(load (expand-file-name "syntaxes.el" user-emacs-directory))
