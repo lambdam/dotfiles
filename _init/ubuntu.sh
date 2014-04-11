@@ -1,11 +1,15 @@
 PACKAGES="\
+aptitude \
 autoconf \
 bison \
 build-essential \
 curl \
+chromium-browser \
+emacs24 \
 git \
 gitg \
-emacs24 \
+htop \
+imagemagick \
 libxslt1-dev \
 libreadline6 \
 libreadline6-dev \
@@ -15,12 +19,15 @@ libxslt1-dev \
 libyaml-dev \
 nginx-full \
 oracle-java7-installer \
+redis-server \
+silversearcher-ag \
 terminator \
 vim \
-wmctrl \
-xchat-gnome \
+vlc \
+xchat \
 zlib1g \
 zlib1g-dev \
+zsh \
 "
 
 RUBY_VERSION="2.1.1"
