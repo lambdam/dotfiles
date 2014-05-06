@@ -98,6 +98,20 @@ fi
 # Bundle
 alias b="bundle exec"
 
+# Thinkpad Trackpoint
+if [[ "$CURRENTOS" == "LINUX" ]]; then
+trackpoint=$(cat <<EOF
+  xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1; \
+  xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 2; \
+  xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Timeout" 200; \
+  xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Axes" 6 7 4 5
+EOF
+)
+
+alias enable-trackpoint=$trackpoint
+fi
+
+
 ################################################################################
 # Per program
 ################################################################################
