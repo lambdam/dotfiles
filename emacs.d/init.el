@@ -175,3 +175,9 @@
 
 ;; Load syntaxes file (associate extensions with major modes)
 (load (expand-file-name "syntaxes.el" user-emacs-directory))
+
+;; Move cursor easily between windows
+(global-set-key (kbd "<M-S-left>") 'windmove-left)
+(global-set-key (kbd "<M-S-right>") 'windmove-right)
+(global-set-key (kbd "<M-S-up>") 'windmove-up)
+(global-set-key (kbd "<M-S-down>") 'windmove-down)
