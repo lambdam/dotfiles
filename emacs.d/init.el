@@ -1,21 +1,14 @@
 (require 'package)
 
 (defvar dam-packages
-  '(ag
+  '(
     auto-complete
-    closure-mode
     dired+
     ecb
-    elixir-mix
-    elixir-mode
     evil
-    flx-ido
     flx
+    flx-ido
     fuzzy
-    fullscreen-mode
-    git-gutter-fringe+
-    git-gutter+
-    haml-mode
     helm
     ido-ubiquitous
     ido-vertical-mode
@@ -24,14 +17,11 @@
     monokai-theme
     multiple-cursors
     projectile
-    racket-mode
     rainbow-delimiters
-    sass-mode
     smex
     smooth-scroll
     smooth-scrolling
-    undo-tree
-    yaml-mode)
+    undo-tree)
   "Dam packages")
 
 (defun dam-install-packages ()
