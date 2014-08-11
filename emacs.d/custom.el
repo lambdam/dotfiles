@@ -12,6 +12,7 @@
  '(ecb-windows-width 0.15)
  '(fringe-mode (quote (4 . 0)) nil (fringe))
  '(global-whitespace-mode t)
+ '(hl-sexp-background-color "#292929")
  '(ido-enable-flex-matching t)
  '(indent-tabs-mode nil)
  '(js-auto-indent-flag t)

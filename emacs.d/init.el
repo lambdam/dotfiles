@@ -10,6 +10,7 @@
     flx-ido
     fuzzy
     helm
+    highlight-sexp
     ido-ubiquitous
     ido-vertical-mode
     magit
