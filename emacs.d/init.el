@@ -80,8 +80,10 @@
 
 ;; For Mac OS rebind meta to function key
 (when (eq system-type 'darwin)
-  (setq mac-function-modifier 'meta)
-  (setq mac-option-modifier 'none))
+  ;; (setq mac-function-modifier 'meta)
+  ;; (setq mac-option-modifier 'none))
+  (setq mac-left-option-modifier 'meta)
+  (setq mac-right-option-modifier 'none))
 
 ;; store all backup and autosave files in the tmp dir
 (setq backup-directory-alist
