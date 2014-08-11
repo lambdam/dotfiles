@@ -10,6 +10,7 @@
  '(ecb-layout-name "left13")
  '(ecb-options-version "2.40")
  '(ecb-windows-width 0.15)
+ '(ecb-windows-width 0.3)
  '(fringe-mode (quote (4 . 0)) nil (fringe))
  '(global-whitespace-mode t)
  '(hl-sexp-background-color "#292929")
