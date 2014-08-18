@@ -2,9 +2,11 @@
 
 (defvar dam-packages
   '(
+    ac-js2
     auto-complete
     dired+
     ecb
+    emmet-mode
     evil
     flx
     flx-ido
@@ -13,16 +15,19 @@
     highlight-sexp
     ido-ubiquitous
     ido-vertical-mode
+    js2-mode
     magit
     markdown-mode+
     monokai-theme
     multiple-cursors
+    neotree
     projectile
     rainbow-delimiters
     smex
     smooth-scroll
     smooth-scrolling
-    undo-tree)
+    undo-tree
+    web-mode)
   "Dam packages")
 
 (defun dam-install-packages ()
@@ -174,3 +179,15 @@
 (global-set-key (kbd "<M-S-right>") 'windmove-right)
 (global-set-key (kbd "<M-S-up>") 'windmove-up)
 (global-set-key (kbd "<M-S-down>") 'windmove-down)
+
+;; Web
+;; ---
+;; Javascript
+;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;; (add-hook 'js-mode-hook 'js2-minor-mode)
+;; (add-hook 'js2-mode-hook 'ac-js2-mode)
+;; HTML and templates
+(add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
+(add-hook 'web-mode-hook 'emmet-mode)
+(add-hook 'html-mode-hook 'emmet-mode)
+(setq web-mode-engines-alist '(("underscore" . "\\.tpl\\'")) )
