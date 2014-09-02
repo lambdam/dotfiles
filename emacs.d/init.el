@@ -137,20 +137,15 @@
 
 ;; Multiple cursors
 (require 'multiple-cursors)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;; Dired
 (toggle-diredp-find-file-reuse-dir 1)
 
 ;; Font size
 (set-face-attribute 'default nil :height 110)
-
-;; Multiple cursors
-;; (setq multiple-cursors-map (make-sparse-keymap))
-;; (define-key multiple-cursors-map (kbd "C->") 'mc/mark-next-like-this)
-;; (add-hook
-;;  'multiple-cursors-mode-hook
-;;  (lambda ()
-;;    ))
 
 ;; Nice scrolling
 (setq
