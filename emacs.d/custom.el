@@ -31,6 +31,7 @@
      ("melpa" . "http://melpa.milkbox.net/packages/")
      ("maramlade" . "http://marmalade-repo.org/packages/"))))
  '(projectile-global-mode t)
+ '(scss-compile-at-save nil)
  '(smooth-scroll/vscroll-step-size 8)
  '(sr-speedbar-right-side nil)
  '(standard-indent 2)
