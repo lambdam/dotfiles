@@ -111,6 +111,10 @@ EOF
 alias enable-trackpoint=$trackpoint
 fi
 
+# MongoDB
+if [[ "$CURRENTOS" == "MACOS" ]]; then
+  alias mongod="mongod --config /usr/local/etc/mongod.conf"
+fi
 
 ################################################################################
 # Per program
