@@ -113,7 +113,7 @@ fi
 
 # MongoDB
 if [[ "$CURRENTOS" == "MACOS" ]]; then
-  alias mongod="mongod --config /usr/local/etc/mongod.conf"
+  alias mongod="mongod --config ~/dotfiles/mongod.conf"
 fi
 
 ################################################################################
