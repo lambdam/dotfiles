@@ -222,6 +222,11 @@
 ;; Language modes
 ;; ==============
 
+;; Clojure / ClojureScript
+;; -----------------------
+
+(add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojure-mode))
+
 ;; Haskell
 ;; -------
 
@@ -246,6 +251,11 @@
 (define-key haskell-cabal-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
 (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
 (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)
+
+;; Ruby
+;; ----
+
+(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 
 ;; Web
 ;; ---
