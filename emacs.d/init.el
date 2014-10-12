@@ -79,7 +79,7 @@
 (evil-mode 1)
 
 ;; Rainbow delimiters
-(global-rainbow-delimiters-mode)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;;
 (load-library "iso-transl")
