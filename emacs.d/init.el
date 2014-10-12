@@ -1,5 +1,8 @@
 (require 'package)
 
+;; Packages
+;; ========
+
 (defvar dam-packages
   '(
     ac-js2
@@ -31,6 +34,7 @@
     web-mode)
   "Dam packages")
 
+;; On a freshly installed Emacs: `M-x` -> `dam-install-packages`
 (defun dam-install-packages ()
   "Installs packages used in this configuration"
   (interactive)
@@ -47,6 +51,10 @@
          dam-packages))
     (error
      (message "%s" "Error on packages installation"))))
+
+
+;; Emacs configuration
+;; ===================
 
 ;; Set up load path
 (add-to-list 'load-path user-emacs-directory)
@@ -76,14 +84,23 @@
 ;; Display line number
 ;; (setq column-number-mode t)
 
-;; Evil mode
-(evil-mode 1)
-
-;; Rainbow delimiters
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-
-;;
 (load-library "iso-transl")
+
+;; store all backup and autosave files in the tmp dir
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
+;; Font size
+(set-face-attribute 'default nil :height 130)
+
+;; disable ring bell
+(setq ring-bell-function 'ignore)
+
+
+;; General keybindings
+;; ===================
 
 ;; For Mac OS rebind meta to function key
 (when (eq system-type 'darwin)
@@ -92,13 +109,36 @@
   (setq mac-left-option-modifier 'meta)
   (setq mac-right-option-modifier 'none))
 
-;; store all backup and autosave files in the tmp dir
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+;; Linux specific
+(when (or
+       (eq system-type 'gnu)
+       (eq system-type 'gnu/linux))
+  (global-set-key [f11] 'fullscreen-mode-fullscreen-toggle)
+  (global-set-key (kbd "<menu>") 'smex))
+
+;; Move cursor easily between windows
+(global-set-key (kbd "<M-S-left>") 'windmove-left)
+(global-set-key (kbd "<M-S-right>") 'windmove-right)
+(global-set-key (kbd "<M-S-up>") 'windmove-up)
+(global-set-key (kbd "<M-S-down>") 'windmove-down)
+
+
+;; General installed modes
+;; =======================
+
+;; Evil mode
+;; ---------
+
+(evil-mode 1)
+
+;; Rainbow delimiters
+;; ------------------
+
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; IDO
+;; ---
+
 (require 'ido)
 (require 'ido-ubiquitous)
 (require 'flx-ido)
@@ -110,12 +150,16 @@
 (ido-vertical-mode +1)
 
 ;; SMEX
+;; ----
+
 (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-;; emacs-smooth-scrolling.el
+;; Smooth scrolling
+;; ----------------
+
 (require 'smooth-scrolling)
 ;; (setq scroll-step 1)
 ;; (setq scroll-conservatively 1000)
@@ -123,58 +167,56 @@
 ;; (setq mouse-wheel-progressive-speed nil)
 ;; (setq mouse-wheel-follow-mouse t)
 
-;; smooth-scroll
-(require 'smooth-scroll)
-(smooth-scroll-mode 'toggle)
-
-;; disable ring bell
-(setq ring-bell-function 'ignore)
-
-;; Autocomplete
-(require 'auto-complete)
-(ac-flyspell-workaround)
-(ac-linum-workaround)
-(global-auto-complete-mode t)
-
-;; Multiple cursors
-(require 'multiple-cursors)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-;; Dired
-(toggle-diredp-find-file-reuse-dir 1)
-
-;; Font size
-(set-face-attribute 'default nil :height 110)
-
 ;; Nice scrolling
 (setq
  scroll-margin 0
  scroll-conservatively 100000
  scroll-preserve-screen-position 1)
 
+;; Smooth scroll
+;; -------------
+
+(require 'smooth-scroll)
+(smooth-scroll-mode 'toggle)
+
+;; Autocomplete
+;; ------------
+
+(require 'auto-complete)
+(ac-flyspell-workaround)
+(ac-linum-workaround)
+(global-auto-complete-mode t)
+
+;; Multiple cursors
+;; ----------------
+
+(require 'multiple-cursors)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+;; Dired plus
+;; ----------
+
+(toggle-diredp-find-file-reuse-dir 1)
+
+;; Ibuffer
+;; -------
+
 ;; Use Ibuffer instead of Buffer List
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; ECB
+;; ---
+
 (setq ecb-tip-of-the-day nil)
 
-;; Full screen
-(when (or
-       (eq system-type 'gnu)
-       (eq system-type 'gnu/linux))
-  (global-set-key [f11] 'fullscreen-mode-fullscreen-toggle)
-  (global-set-key (kbd "<menu>") 'smex))
+;; Git gutter plus
+;; ---------------
 
-;; Load syntaxes file (associate extensions with major modes)
-(load (expand-file-name "syntaxes.el" user-emacs-directory))
-
-;; Move cursor easily between windows
-(global-set-key (kbd "<M-S-left>") 'windmove-left)
-(global-set-key (kbd "<M-S-right>") 'windmove-right)
-(global-set-key (kbd "<M-S-up>") 'windmove-up)
-(global-set-key (kbd "<M-S-down>") 'windmove-down)
+(add-hook 'prog-mode-hook 'git-gutter+-mode)
+;; (eval-after-load 'git-gutter+
+;;   '(require git-gutter-fringe+))
 
 
 ;; Language modes
@@ -207,6 +249,7 @@
 
 ;; Web
 ;; ---
+
 ;; Javascript
 ;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 ;; (add-hook 'js-mode-hook 'js2-minor-mode)
@@ -216,3 +259,10 @@
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'html-mode-hook 'emmet-mode)
 (setq web-mode-engines-alist '(("underscore" . "\\.tpl\\'")) )
+
+
+;; File syntaxes associations
+;; ==========================
+
+;; Associate extensions with major modes
+(load (expand-file-name "syntaxes.el" user-emacs-directory))
