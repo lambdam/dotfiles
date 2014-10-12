@@ -7,6 +7,7 @@
   '(
     ac-js2
     auto-complete
+    clojure-mode
     dired+
     ecb
     emmet-mode
@@ -14,6 +15,7 @@
     flx
     flx-ido
     fuzzy
+    git-gutter+
     haskell-mode
     helm
     highlight-sexp
@@ -27,6 +29,8 @@
     neotree
     projectile
     rainbow-delimiters
+    ruby-mode
+    slime
     smex
     smooth-scroll
     smooth-scrolling
