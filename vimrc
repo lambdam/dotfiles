@@ -1,6 +1,8 @@
+" Note: Skip initialization for vim-tiny or vim-small.
+if !1 | finish | endif
+
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
-set nocompatible
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Neobundle
@@ -9,10 +11,14 @@ set nocompatible
 " Check on https://github.com/Shougo/neobundle.vim
 
 if has('vim_starting')
+  " Be iMproved
+  set nocompatible
+  " Required:
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 "" Put bundle here
 "
@@ -31,36 +37,52 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 " :NeoBundleInstall(!)    - install(update) bundles
 " :NeoBundleClean(!)      - confirm(or auto-approve) removal of unused bundles
 
+" Main plugins
+" ------------
+
 NeoBundle 'scrooloose/nerdtree.git'
+NeoBundle 'scrooloose/nerdcommenter.git'
 NeoBundle 'jeetsukumaran/vim-buffergator.git'
 NeoBundle 'airblade/vim-gitgutter.git'
 NeoBundle 'kien/ctrlp.vim.git'
 NeoBundle 'vim-scripts/AutoComplPop.git'
 NeoBundle 'bronson/vim-trailing-whitespace.git'
+
+" Secondary plugins
+" -----------------
+
 "NeoBundle 'terryma/vim-multiple-cursors.git'
-NeoBundle 'scrooloose/nerdcommenter.git'
-NeoBundle 'Raimondi/delimitMate.git'
+"NeoBundle 'Raimondi/delimitMate.git'
 "NeoBundle 'kchmck/vim-coffee-script.git'
 "NeoBundle 'LStinson/TagmaBufMgr.git'
 "NeoBundle 'fholgado/minibufexpl.vim.git'
 "NeoBundle 'tpope/vim-haml.git'
 "NeoBundle 'jtratner/vim-flavored-markdown.git'
 "NeoBundle 'dbarsam/vim-rainbow-parentheses.git'
-NeoBundle 'yegappan/grep.git'
-NeoBundle 'scrooloose/syntastic.git'
-NeoBundle 'Lokaltog/vim-easymotion.git'
-NeoBundle 'tpope/vim-fugitive'
+"NeoBundle 'yegappan/grep.git'
+"NeoBundle 'scrooloose/syntastic.git'
+"NeoBundle 'Lokaltog/vim-easymotion.git'
+"NeoBundle 'tpope/vim-fugitive'
 "NeoBundle 'briancollins/vim-jst.git'
 "NeoBundle 'majutsushi/tagbar.git'
-NeoBundle 'tomtom/indentfolds_vim.git'
-NeoBundle 'rking/ag.vim.git'
-NeoBundle 'taiansu/nerdtree-ag.git'
+"NeoBundle 'tomtom/indentfolds_vim.git'
+"NeoBundle 'rking/ag.vim.git'
+"NeoBundle 'taiansu/nerdtree-ag.git'
 
 "NeoBundle 'elixir-lang/vim-elixir.git'
 
+" Themes
+" ------
+
 NeoBundle 'tomasr/molokai.git'
 
+call neobundle#end()
+
+" Required:
 filetype plugin indent on
+
+ " If there are uninstalled bundles found on startup,
+ " this will conveniently prompt you to install them.
 NeoBundleCheck
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
