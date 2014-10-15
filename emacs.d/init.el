@@ -102,6 +102,8 @@
 ;; disable ring bell
 (setq ring-bell-function 'ignore)
 
+;; UTF-8 default encoding
+(prefer-coding-system 'utf-8)
 
 ;; General keybindings
 ;; ===================
