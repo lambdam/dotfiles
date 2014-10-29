@@ -275,10 +275,3 @@
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'html-mode-hook 'emmet-mode)
 (setq web-mode-engines-alist '(("underscore" . "\\.tpl\\'")) )
-
-
-;; File syntaxes associations
-;; ==========================
-
-;; Associate extensions with major modes
-(load (expand-file-name "syntaxes.el" user-emacs-directory))
