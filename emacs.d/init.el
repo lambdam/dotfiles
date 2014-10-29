@@ -128,6 +128,11 @@
 (global-set-key (kbd "<M-S-up>") 'windmove-up)
 (global-set-key (kbd "<M-S-down>") 'windmove-down)
 
+;; Resize windows
+(global-set-key (kbd "<C-S-up>") 'shrink-window)
+(global-set-key (kbd "<C-S-down>") 'enlarge-window)
+(global-set-key (kbd "<C-S-left>") 'shrink-window-horizontally)
+(global-set-key (kbd "<C-S-right>") 'enlarge-window-horizontally)
 
 ;; General installed modes
 ;; =======================
