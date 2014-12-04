@@ -12,6 +12,7 @@
     ecb
     emmet-mode
     evil
+    fill-column-indicator
     flx
     flx-ido
     fuzzy
@@ -61,7 +62,7 @@
 ;; ===================
 
 ;; Set up load path
-(add-to-list 'load-path user-emacs-directory)
+(add-to-list 'load-path user-emacs-directory t)
 
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -113,7 +114,10 @@
   ;; (setq mac-function-modifier 'meta)
   ;; (setq mac-option-modifier 'none))
   (setq mac-left-option-modifier 'meta)
-  (setq mac-right-option-modifier 'none))
+  (setq mac-right-option-modifier 'none)
+  (setq ns-use-native-fullscreen nil)
+  (global-set-key [f9] 'toggle-frame-fullscreen)
+  )
 
 ;; Linux specific
 (when (or
@@ -133,6 +137,10 @@
 (global-set-key (kbd "<C-S-down>") 'enlarge-window)
 (global-set-key (kbd "<C-S-left>") 'shrink-window-horizontally)
 (global-set-key (kbd "<C-S-right>") 'enlarge-window-horizontally)
+
+;; Fill Column
+(setq-default fill-column 80)
+(setq auto-fill-mode 1)
 
 ;; General installed modes
 ;; =======================
@@ -230,6 +238,18 @@
 ;;   '(require git-gutter-fringe+))
 
 
+;; Neotree
+;; -------
+
+(global-set-key [f8] 'neotree-toggle)
+
+
+;; Fill Column Indicator
+;; ---------------------
+
+(add-hook 'prog-mode-hook 'fci-mode)
+
+
 ;; Language modes
 ;; ==============
 
@@ -277,6 +297,7 @@
 ;; (add-hook 'js2-mode-hook 'ac-js2-mode)
 ;; HTML and templates
 (add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'html-mode-hook 'emmet-mode)
-(setq web-mode-engines-alist '(("underscore" . "\\.tpl\\'")) )
+;; (setq web-mode-engines-alist '(("underscore" . "\\.tpl\\'")) )
