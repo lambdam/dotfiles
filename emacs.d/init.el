@@ -305,7 +305,6 @@
 ;; (add-hook 'js2-mode-hook 'ac-js2-mode)
 ;; HTML and templates
 (add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'html-mode-hook 'emmet-mode)
 ;; (setq web-mode-engines-alist '(("underscore" . "\\.tpl\\'")) )
