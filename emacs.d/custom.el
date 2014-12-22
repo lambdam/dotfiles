@@ -55,6 +55,7 @@
      ("maramlade" . "http://marmalade-repo.org/packages/"))))
  '(projectile-global-mode t)
  '(scss-compile-at-save nil)
+ '(sh-indentation 2)
  '(smooth-scroll/vscroll-step-size 8)
  '(sr-speedbar-right-side nil)
  '(standard-indent 2)
