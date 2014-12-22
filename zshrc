@@ -116,6 +116,9 @@ if [[ "$CURRENTOS" == "MACOS" ]]; then
   alias mongod="mongod --config ~/dotfiles/mongod.conf"
 fi
 
+# tig
+alias tigg="tig --all"
+
 ################################################################################
 # Per program
 ################################################################################
