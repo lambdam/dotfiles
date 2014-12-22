@@ -106,6 +106,14 @@
 ;; UTF-8 default encoding
 (prefer-coding-system 'utf-8)
 
+;; Exec Path
+;; http://stackoverflow.com/questions/13671839/cant-launch-lein-repl-in-emacs
+;; Suggestion:
+;; (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+;; (setq exec-path (append exec-path '("/usr/local/bin")))
+;; But this simpler option works
+(add-to-list 'exec-path "/usr/local/bin")
+
 ;; General keybindings
 ;; ===================
 
