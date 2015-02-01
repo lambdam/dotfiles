@@ -4,12 +4,9 @@
 ;; ========
 
 (defvar dam-packages
-  '(
-    ac-js2
-    auto-complete
+  '(auto-complete
+    cider
     clojure-mode
-    dired+
-    ecb
     emmet-mode
     evil
     fill-column-indicator
@@ -22,21 +19,18 @@
     highlight-sexp
     ido-ubiquitous
     ido-vertical-mode
-    js2-mode
     magit
-    markdown-mode+
+    markdown-mode
     monokai-theme
     multiple-cursors
     neotree
     projectile
     rainbow-delimiters
     ruby-mode
-    slime
     smex
     smooth-scroll
     smooth-scrolling
-    undo-tree
-    web-mode)
+    undo-tree)
   "Dam packages")
 
 ;; On a freshly installed Emacs: `M-x` -> `dam-install-packages`
@@ -62,7 +56,7 @@
 ;; ===================
 
 ;; Set up load path
-(add-to-list 'load-path user-emacs-directory t)
+;; (add-to-list 'load-path user-emacs-directory t)
 
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -225,7 +219,7 @@
 ;; Dired plus
 ;; ----------
 
-(toggle-diredp-find-file-reuse-dir 1)
+;; (toggle-diredp-find-file-reuse-dir 1)
 
 ;; Ibuffer
 ;; -------
@@ -255,7 +249,7 @@
 ;; Fill Column Indicator
 ;; ---------------------
 
-(add-hook 'prog-mode-hook 'fci-mode)
+;; (add-hook 'prog-mode-hook 'fci-mode)
 
 
 ;; Language modes
@@ -304,7 +298,7 @@
 ;; (add-hook 'js-mode-hook 'js2-minor-mode)
 ;; (add-hook 'js2-mode-hook 'ac-js2-mode)
 ;; HTML and templates
-(add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
-(add-hook 'web-mode-hook 'emmet-mode)
+;; (add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
+;; (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'html-mode-hook 'emmet-mode)
 ;; (setq web-mode-engines-alist '(("underscore" . "\\.tpl\\'")) )
