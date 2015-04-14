@@ -16,7 +16,7 @@
     git-gutter+
     haskell-mode
     helm
-    highlight-sexp
+    highlight-parentheses
     ido-ubiquitous
     ido-vertical-mode
     magit
@@ -259,6 +259,8 @@
 ;; -----------------------
 
 (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
+(add-hook 'clojure-mode-hook 'highlight-parentheses-mode)
 
 ;; Haskell
 ;; -------
