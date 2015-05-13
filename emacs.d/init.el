@@ -129,10 +129,10 @@
   (global-set-key (kbd "<menu>") 'smex))
 
 ;; Move cursor easily between windows
-(global-set-key (kbd "<C-left>") 'windmove-left)
-(global-set-key (kbd "<C-right>") 'windmove-right)
-(global-set-key (kbd "<C-up>") 'windmove-up)
-(global-set-key (kbd "<C-down>") 'windmove-down)
+(global-set-key (kbd "<M-s-left>") 'windmove-left)
+(global-set-key (kbd "<M-s-right>") 'windmove-right)
+(global-set-key (kbd "<M-s-up>") 'windmove-up)
+(global-set-key (kbd "<M-s-down>") 'windmove-down)
 
 ;; Resize windows
 (global-set-key (kbd "<C-S-up>") 'shrink-window)
