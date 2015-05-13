@@ -306,3 +306,4 @@
 ;; (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'html-mode-hook 'emmet-mode)
 ;; (setq web-mode-engines-alist '(("underscore" . "\\.tpl\\'")) )
+(put 'downcase-region 'disabled nil)
