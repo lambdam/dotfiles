@@ -24,6 +24,7 @@
     monokai-theme
     multiple-cursors
     neotree
+    paredit
     projectile
     rainbow-delimiters
     ruby-mode
@@ -261,6 +262,7 @@
 (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
 (add-hook 'clojure-mode-hook 'highlight-parentheses-mode)
+(add-hook 'clojure-mode-hook 'paredit-mode)
 
 ;; Haskell
 ;; -------
