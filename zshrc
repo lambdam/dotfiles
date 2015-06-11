@@ -33,7 +33,7 @@ CASE_SENSITIVE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew rbenv gem rake npm grunt golang nyan lein)
+plugins=(git brew rbenv gem rake npm grunt golang nyan lein git-annex nvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -67,7 +67,7 @@ alias processus='ps -e -o"pid ppid user ucomm"'
 
 # VLC
 if [[ "$CURRENTOS" == "MACOS" ]]; then
-  alias vlc="/Applications/VLC.app/Contents/MacOS/VLC"
+  alias vlc="/Users/dam/Applications/VLC.app/Contents/MacOS/VLC"
 fi
 alias vlcc="vlc -I ncurses"
 
@@ -75,10 +75,12 @@ alias vlcc="vlc -I ncurses"
 alias gemacs='emacsclient -c -n -a "" -F "((fullscreen . maximized))"'
 
 # Radios
-alias france-inter="mplayer -playlist http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u"
-alias france-culture="mplayer -playlist http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u"
-alias france-inter-vlc="vlcc http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u"
-alias france-culture-vlc="vlcc http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u"
+alias radio-france-inter="mplayer -playlist http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u"
+alias radio-france-culture="mplayer -playlist http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u"
+alias radio-france-musique="mplayer -playlist http://www.tv-radio.com/station/france_musique_mp3/france_musique_mp3-128k.m3u"
+alias radio-france-inter-vlc="vlcc http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u"
+alias radio-france-culture-vlc="vlcc http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u"
+alias radio-fip="mplayer http://mp3lg.tdf-cdn.com/fip/all/fiphautdebit.mp3"
 
 # TMUX
 alias tmux="tmux -2"
@@ -145,7 +147,7 @@ export PATH=$PATH:$GOPATH/bin
 [[ -d ~/.opam ]] && PATH=$PATH:$HOME/.opam/system/bin
 
 # Cabal
-# PATH=$PATH:$HOME/.cabal/bin
+PATH=$PATH:$HOME/.cabal/bin
 
 # Racket
 if [[ -d /Applications/Racket\ v6.0/bin ]]; then
@@ -178,3 +180,19 @@ fi
 ################################################################################
 
 export PATH="$PATH:$HOME/bin"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+################################################################################
+# Completions
+################################################################################
+
+# Load brew zsh completions
+
+if [[ "$CURRENTOS" == "MACOS" ]]; then
+  fpath=(/usr/local/share/zsh/site-functions $fpath)
+fi
+
+autoload -Uz compinit
+compinit
