@@ -30,6 +30,7 @@
     squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
     ri = rebase --interactive --autosquash --committer-date-is-author-date
     ap = add --patch
+    poule = pull --rebase
 
 [push]
     default = tracking
@@ -76,3 +77,7 @@
 
 [core]
   excludesfile = ~/.gitignore_global
+  whitespace = trailing-space,space-before-tab
+
+[gui]
+  fontdiff = -family Monaco -size 13 -weight normal -slant roman -underline 0 -overstrike 0

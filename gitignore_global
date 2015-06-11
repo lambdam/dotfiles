@@ -40,6 +40,7 @@
 Icon?
 ehthumbs.db
 Thumbs.db
+.fseventsd
 
 #######
 # VIM #
@@ -72,3 +73,8 @@ sftp-config.json
 # SASS
 ################
 /.sass-cache
+
+################
+# Clojure
+################
+.nrepl-history
