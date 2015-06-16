@@ -14,6 +14,13 @@ local menubar = require("menubar")
 -- Load Debian menu entries
 require("debian.menu")
 
+-- Custom requires
+-- ---------------
+
+require("obvious.battery")
+
+-- ---
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -195,6 +202,7 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(obvious.battery())
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
@@ -447,3 +455,9 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+
+-- My custom config
+-- ================
+
+
