@@ -42,6 +42,7 @@
  '(indent-tabs-mode nil)
  '(js-auto-indent-flag t)
  '(js-indent-level 2)
+ '(js-switch-indent-offset 2)
  '(linum-eager t)
  '(linum-format (quote dynamic))
  '(magit-diff-use-overlays nil)

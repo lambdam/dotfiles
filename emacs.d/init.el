@@ -87,6 +87,8 @@
 (load-library "iso-transl")
 
 ;; store all backup and autosave files in the tmp dir
+;; (setq auto-save-default nil)
+;; (setq make-backup-files nil)
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
@@ -108,6 +110,9 @@
 ;; (setq exec-path (append exec-path '("/usr/local/bin")))
 ;; But this simpler option works
 (add-to-list 'exec-path "/usr/local/bin")
+
+;; case insensitive sorts
+(setq-default sort-fold-case t)
 
 ;; General keybindings
 ;; ===================
@@ -144,6 +149,9 @@
 ;; Fill Column
 (setq-default fill-column 80)
 (setq auto-fill-mode 1)
+
+;; Downcase
+(put 'downcase-region 'disabled nil)
 
 ;; General installed modes
 ;; =======================
@@ -240,6 +248,11 @@
 ;; (eval-after-load 'git-gutter+
 ;;   '(require git-gutter-fringe+))
 
+;; Magit
+;; -----
+
+(setq magit-auto-revert-mode nil)
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 ;; Neotree
 ;; -------
@@ -267,11 +280,12 @@
 ;; Haskell
 ;; -------
 
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-(custom-set-variables
-  '(haskell-process-suggest-remove-import-lines t)
-  '(haskell-process-auto-import-loaded-modules t)
-  '(haskell-process-log t))
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;; (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+;; (custom-set-variables
+;;   '(haskell-process-suggest-remove-import-lines t)
+;;   '(haskell-process-auto-import-loaded-modules t)
+;;   '(haskell-process-log t))
 
 ;; Haskell bindings
 ;; (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
@@ -294,16 +308,19 @@
 
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 
-;; Web
-;; ---
-
 ;; Javascript
+;; ----------
+
 ;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 ;; (add-hook 'js-mode-hook 'js2-minor-mode)
 ;; (add-hook 'js2-mode-hook 'ac-js2-mode)
+
 ;; HTML and templates
-;; (add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
-;; (add-hook 'web-mode-hook 'emmet-mode)
+;; ------------------
+
+(add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'html-mode-hook 'emmet-mode)
+
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
 ;; (setq web-mode-engines-alist '(("underscore" . "\\.tpl\\'")) )
-(put 'downcase-region 'disabled nil)
