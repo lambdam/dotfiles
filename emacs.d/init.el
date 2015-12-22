@@ -322,5 +322,6 @@
 (add-hook 'html-mode-hook 'emmet-mode)
 
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.eex\\'" . web-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
 ;; (setq web-mode-engines-alist '(("underscore" . "\\.tpl\\'")) )
