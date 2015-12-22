@@ -168,6 +168,11 @@ if [[ -d /Applications/Racket\ v6.0/bin ]]; then
   export PATH="$PATH:/Applications/Racket v6.0/bin"
 fi
 
+# Nix Package Manager
+if [[ "$CURRENTOS" == "MACOS" ]]; then
+  . ~/.nix-profile/etc/profile.d/nix.sh
+fi
+
 ################################################################################
 # Per computer
 ################################################################################
