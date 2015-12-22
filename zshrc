@@ -64,6 +64,9 @@ export TERM="xterm-256color"
 # General
 alias ll="ls -halF"
 alias processus='ps -e -o"pid ppid user ucomm"'
+alias ls-executables="whence -pm '*'"
+alias cp-follow-symlinks="cp -RL"
+alias curl-response-status="curl -I"
 
 # VLC
 if [[ "$CURRENTOS" == "MACOS" ]]; then
@@ -77,10 +80,12 @@ alias gemacs='emacsclient -c -n -a "" -F "((fullscreen . maximized))"'
 # Radios
 alias radio-france-inter="mplayer -playlist http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u"
 alias radio-france-culture="mplayer -playlist http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u"
+alias radio-france-info="mplayer -playlist http://audio.scdn.arkena.com/11006/franceinfo-midfi128.mp3"
 alias radio-france-musique="mplayer -playlist http://www.tv-radio.com/station/france_musique_mp3/france_musique_mp3-128k.m3u"
 alias radio-france-inter-vlc="vlcc http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u"
 alias radio-france-culture-vlc="vlcc http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u"
 alias radio-fip="mplayer http://mp3lg.tdf-cdn.com/fip/all/fiphautdebit.mp3"
+alias radio-classique="mplayer http://broadcast.infomaniak.net/radioclassique-high.mp3"
 
 # TMUX
 alias tmux="tmux -2"
@@ -120,6 +125,15 @@ fi
 
 # tig
 alias tigg="tig --all"
+
+# Node.js
+alias es6="node --harmony"
+
+# PostgreSQL
+alias postgres-start="postgres -D /usr/local/var/postgres"
+
+# Git Annex
+alias ga="git annex"
 
 ################################################################################
 # Per program
