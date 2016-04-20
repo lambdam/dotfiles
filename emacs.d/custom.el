@@ -6,7 +6,13 @@
  '(ac-use-fuzzy t)
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
+ '(clojure-align-binding-forms
+   (quote
+    ("let" "when-let" "when-some" "if-let" "if-some" "binding" "loop" "doseq" "for" "with-open" "with-local-vars" "with-redefs" "match")))
+ '(clojure-align-cond-forms (quote ("condp" "cond" "cond->" "cond->>" "case" "are")))
+ '(clojure-align-forms-automatically nil)
  '(clojure-defun-style-default-indent t)
+ '(clojure-indent-style :align-arguments)
  '(compilation-message-face (quote default))
  '(css-indent-offset 2)
  '(custom-enabled-themes (quote (monokai)))
