@@ -16,6 +16,7 @@
     type = cat-file -t
     dump = cat-file -p
     undo = reset --soft HEAD^
+    first-empty-commit = commit --allow-empty -m "Created git project"
     # t for tree
     t = log --graph --decorate --pretty=oneline --abbrev-commit
     tt = log --graph --all --decorate --pretty=oneline --abbrev-commit
