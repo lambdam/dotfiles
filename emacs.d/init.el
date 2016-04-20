@@ -348,6 +348,7 @@
 ;; (add-hook 'js-mode-hook 'js2-minor-mode)
 ;; (add-hook 'js2-mode-hook 'ac-js2-mode)
 
+
 ;; HTML and templates
 ;; ------------------
 
@@ -358,3 +359,12 @@
 (add-to-list 'auto-mode-alist '("\\.eex\\'" . web-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
 ;; (setq web-mode-engines-alist '(("underscore" . "\\.tpl\\'")) )
+
+
+;; Elixir - Alchemist
+;; ------------------
+
+(setq alchemist-mix-command "/usr/local/bin/mix")
+(setq alchemist-iex-program-name "/usr/local/bin/iex")
+(setq alchemist-execute-command "/usr/local/bin/elixir")
+(setq alchemist-compile-command "/usr/local/bin/elixirc")
