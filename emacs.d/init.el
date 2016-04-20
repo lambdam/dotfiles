@@ -309,6 +309,8 @@
 (add-hook 'clojure-mode-hook 'highlight-parentheses-mode)
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
+(setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
+
 ;; Haskell
 ;; -------
 
