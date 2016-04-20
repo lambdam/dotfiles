@@ -53,8 +53,9 @@
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa" . "http://melpa.org/packages/")
-     ("marmalade" . "http://marmalade-repo.org/packages/"))))
+     ("melpa" . "https://melpa.org/packages/")
+     ("marmalade" . "http://marmalade-repo.org/packages/")
+     ("melpa-stable" . "https://stable.melpa.org/packages/"))))
  '(projectile-global-mode t)
  '(scss-compile-at-save nil)
  '(sh-indentation 2)
