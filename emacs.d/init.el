@@ -16,6 +16,7 @@
     git-gutter+
     haskell-mode
     helm
+    helm-ag
     highlight-parentheses
     ido-ubiquitous
     ido-vertical-mode
@@ -29,10 +30,34 @@
     rainbow-delimiters
     ruby-mode
     smex
-    smooth-scroll
+    ;; smooth-scroll
     smooth-scrolling
+    tuareg ;; OCaml mode
     undo-tree)
   "Dam packages")
+
+;; Emacs >= 24.4
+(add-to-list 'package-pinned-packages '(auto-complete . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(clojure-mode . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(evil . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(flx . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(flx-ido . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(fuzzy . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(git-gutter+ . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(haskell-mode . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(helm . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(helm-ag . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(highlight-parentheses . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(ido-ubiquitous . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(ido-vertical-mode . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(magit . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(multiple-cursors . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(paredit . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(projectile . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(rainbow-delimiters . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(smex . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(tuareg . "melpa-stable") t)
 
 ;; On a freshly installed Emacs: `M-x` -> `dam-install-packages`
 (defun dam-install-packages ()
