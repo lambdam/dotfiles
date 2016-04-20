@@ -294,6 +294,13 @@
 ;; Language modes
 ;; ==============
 
+;; Emacs Lisp
+;; ----------
+
+(add-hook 'emacs-lisp-mode-hook 'highlight-parentheses-mode)
+(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+
+
 ;; Clojure / ClojureScript
 ;; -----------------------
 
