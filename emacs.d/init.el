@@ -231,8 +231,8 @@
 ;; Smooth scroll
 ;; -------------
 
-(require 'smooth-scroll)
-(smooth-scroll-mode 'toggle)
+;; (require 'smooth-scroll)
+;; (smooth-scroll-mode 'toggle)
 
 ;; Autocomplete
 ;; ------------
