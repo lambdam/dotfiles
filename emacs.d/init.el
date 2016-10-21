@@ -17,6 +17,7 @@
     haskell-mode
     helm
     helm-ag
+    helm-git-grep
     highlight-parentheses
     ido-ubiquitous
     ido-vertical-mode
@@ -304,12 +305,20 @@
 ;; Clojure / ClojureScript
 ;; -----------------------
 
-(add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.cljx\\'" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode))
 (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
 (add-hook 'clojure-mode-hook 'highlight-parentheses-mode)
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
-(setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
+;; https://github.com/bhauman/lein-figwheel/wiki/Using-the-Figwheel-REPL-within-NRepl#integration-with-emacscider
+;; (require 'cider)
+;; (setq cider-cljs-lein-repl
+;;       "(do (require 'figwheel-sidecar.repl-api)
+;;            (figwheel-sidecar.repl-api/start-figwheel!)
+;;            (figwheel-sidecar.repl-api/cljs-repl))")
+(setq cider-repl-use-pretty-printing t)
 
 ;; Haskell
 ;; -------
@@ -368,3 +377,9 @@
 (setq alchemist-iex-program-name "/usr/local/bin/iex")
 (setq alchemist-execute-command "/usr/local/bin/elixir")
 (setq alchemist-compile-command "/usr/local/bin/elixirc")
+
+
+;; ELM
+;; ---
+
+(add-hook 'elm-mode-hook 'auto-complete-mode)
