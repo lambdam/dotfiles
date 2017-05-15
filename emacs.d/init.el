@@ -6,14 +6,16 @@
 (defvar dam-packages
   '(auto-complete
     cider
+    clj-refactor
     clojure-mode
     emmet-mode
     evil
+    exec-path-from-shell
     fill-column-indicator
     flx
     flx-ido
     fuzzy
-    git-gutter+
+    ;; git-gutter+
     haskell-mode
     helm
     helm-ag
@@ -34,7 +36,8 @@
     ;; smooth-scroll
     smooth-scrolling
     tuareg ;; OCaml mode
-    undo-tree)
+    undo-tree
+    which-key)
   "Dam packages")
 
 ;; Emacs >= 24.4
@@ -45,10 +48,11 @@
 (add-to-list 'package-pinned-packages '(flx . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(flx-ido . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(fuzzy . "melpa-stable") t)
-(add-to-list 'package-pinned-packages '(git-gutter+ . "melpa-stable") t)
+;; (add-to-list 'package-pinned-packages '(git-gutter+ . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(haskell-mode . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(helm . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(helm-ag . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(helm-git-grep . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(highlight-parentheses . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(ido-ubiquitous . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(ido-vertical-mode . "melpa-stable") t)
@@ -59,6 +63,7 @@
 (add-to-list 'package-pinned-packages '(rainbow-delimiters . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(smex . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(tuareg . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(which-key . "melpa-stable") t)
 
 ;; On a freshly installed Emacs: `M-x` -> `dam-install-packages`
 (defun dam-install-packages ()
@@ -88,6 +93,10 @@
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (package-initialize)
+;; exec-path-from-shell
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+;; ---
 (load custom-file)
 
 ;; Turn off mouse interface early in startup to avoid momentary display
@@ -154,17 +163,16 @@
   )
 
 ;; Linux specific
-(when (or
-       (eq system-type 'gnu)
-       (eq system-type 'gnu/linux))
+(when (or (eq system-type 'gnu)
+          (eq system-type 'gnu/linux))
   (global-set-key [f11] 'fullscreen-mode-fullscreen-toggle)
   (global-set-key (kbd "<menu>") 'smex))
 
 ;; Move cursor easily between windows
-(global-set-key (kbd "<M-s-left>") 'windmove-left)
-(global-set-key (kbd "<M-s-right>") 'windmove-right)
-(global-set-key (kbd "<M-s-up>") 'windmove-up)
-(global-set-key (kbd "<M-s-down>") 'windmove-down)
+(global-set-key (kbd "<M-A-left>") 'windmove-left)
+(global-set-key (kbd "<M-A-right>") 'windmove-right)
+(global-set-key (kbd "<M-A-up>") 'windmove-up)
+(global-set-key (kbd "<M-A-down>") 'windmove-down)
 
 ;; Resize windows
 (global-set-key (kbd "<C-S-up>") 'shrink-window)
@@ -262,15 +270,10 @@
 ;; Use Ibuffer instead of Buffer List
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-;; ECB
-;; ---
-
-(setq ecb-tip-of-the-day nil)
-
 ;; Git gutter plus
 ;; ---------------
 
-(add-hook 'prog-mode-hook 'git-gutter+-mode)
+;; (add-hook 'prog-mode-hook 'git-gutter+-mode)
 ;; (eval-after-load 'git-gutter+
 ;;   '(require git-gutter-fringe+))
 
@@ -290,6 +293,13 @@
 ;; ---------------------
 
 ;; (add-hook 'prog-mode-hook 'fci-mode)
+
+
+;; Which-key
+;; ---------
+
+(require 'which-key)
+(which-key-mode)
 
 
 ;; Language modes
@@ -318,7 +328,21 @@
 ;;       "(do (require 'figwheel-sidecar.repl-api)
 ;;            (figwheel-sidecar.repl-api/start-figwheel!)
 ;;            (figwheel-sidecar.repl-api/cljs-repl))")
+
+(require 'clj-refactor)
+(defun my-clojure-mode-hook ()
+    (clj-refactor-mode 1)
+    (yas-minor-mode 1) ; for adding require/use/import statements
+    ;; This choice of keybinding leaves cider-macroexpand-1 unbound
+    (cljr-add-keybindings-with-prefix "C-c C-m"))
+(add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
+
+(require 'cider)
 (setq cider-repl-use-pretty-printing t)
+(setq cider-cljs-lein-repl
+      "(do (require 'figwheel-sidecar.repl-api)
+           (figwheel-sidecar.repl-api/start-figwheel!)
+           (figwheel-sidecar.repl-api/cljs-repl))")
 
 ;; Haskell
 ;; -------
@@ -383,3 +407,20 @@
 ;; ---
 
 (add-hook 'elm-mode-hook 'auto-complete-mode)
+
+
+;; LaTeX - AucTeX
+;; --------------
+
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+
+(add-hook 'LaTeX-mode-hook 'visual-line-mode)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-AUCTeX t)
+
+(setq TeX-PDF-mode t)
