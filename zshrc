@@ -33,7 +33,7 @@ CASE_SENSITIVE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew rbenv gem rake npm grunt golang nyan lein git-annex nvm)
+plugins=(git brew rbenv gem rake npm grunt golang nyan lein git-annex nvm nix)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -70,7 +70,7 @@ alias curl-response-status="curl -I"
 
 # VLC
 if [[ "$CURRENTOS" == "MACOS" ]]; then
-  alias vlc="/Users/dam/Applications/VLC.app/Contents/MacOS/VLC"
+  alias vlc="/Applications/VLC.app/Contents/MacOS/VLC"
 fi
 alias vlcc="vlc -I ncurses"
 
@@ -133,7 +133,7 @@ alias es6="node --harmony"
 alias postgres-start="postgres -D /usr/local/var/postgres"
 
 # Git Annex
-alias ga="git annex"
+# alias ga="git annex"
 
 ################################################################################
 # Per program
@@ -172,6 +172,13 @@ fi
 if [[ "$CURRENTOS" == "MACOS" ]]; then
   . ~/.nix-profile/etc/profile.d/nix.sh
 fi
+
+# asdf
+if [[ "$CURRENTOS" == "MACOS" ]]; then
+  . $HOME/.asdf/asdf.sh
+  . $HOME/.asdf/completions/asdf.bash
+fi
+
 
 ################################################################################
 # Per computer
@@ -214,7 +221,7 @@ if [[ "$CURRENTOS" == "MACOS" ]]; then
 fi
 
 autoload -Uz compinit
-compinit
+compinit -u
 
 # OPAM configuration
 . /Users/dam/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
