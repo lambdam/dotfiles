@@ -142,7 +142,6 @@ alias postgres-start="postgres -D /usr/local/var/postgres"
 # Homebrew
 if [[ "$CURRENTOS" == "MACOS" ]]; then
   export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
-  source `brew --prefix`/etc/profile.d/z.sh
 fi
 
 # NVM
@@ -174,9 +173,15 @@ if [[ "$CURRENTOS" == "MACOS" ]]; then
 fi
 
 # asdf
+source $HOME/.asdf/asdf.sh
+source $HOME/.asdf/completions/asdf.bash
+
+# z
 if [[ "$CURRENTOS" == "MACOS" ]]; then
-  . $HOME/.asdf/asdf.sh
-  . $HOME/.asdf/completions/asdf.bash
+  source `brew --prefix`/etc/profile.d/z.sh
+fi
+if [[ "$CURRENTOS" == "LINUX" ]]; then
+  source ~/code/github-non-dam/z/z.sh
 fi
 
 
@@ -186,10 +191,6 @@ fi
 
 if [[ -s ~/.zshrc_specific ]]; then
   source ~/.zshrc_specific
-fi
-
-if [[ "$CURRENTOS" == "MACOS" ]]; then
-  PATH=$PATH:/Users/dam/local/bin
 fi
 
 ################################################################################
