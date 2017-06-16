@@ -4,10 +4,12 @@
 ;; ========
 
 (defvar dam-packages
-  '(auto-complete
+  '(
+    ;; auto-complete
     cider
     clj-refactor
     clojure-mode
+    company
     emmet-mode
     evil
     exec-path-from-shell
@@ -41,7 +43,7 @@
   "Dam packages")
 
 ;; Emacs >= 24.4
-(add-to-list 'package-pinned-packages '(auto-complete . "melpa-stable") t)
+;; (add-to-list 'package-pinned-packages '(auto-complete . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(clojure-mode . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(evil . "melpa-stable") t)
@@ -243,13 +245,18 @@
 ;; (require 'smooth-scroll)
 ;; (smooth-scroll-mode 'toggle)
 
+;; Company mode
+;; ------------
+
+(add-hook 'after-init-hook 'global-company-mode)
+
 ;; Autocomplete
 ;; ------------
 
-(require 'auto-complete)
-(ac-flyspell-workaround)
-(ac-linum-workaround)
-(global-auto-complete-mode t)
+;; (require 'auto-complete)
+;; (ac-flyspell-workaround)
+;; (ac-linum-workaround)
+;; (global-auto-complete-mode t)
 
 ;; Multiple cursors
 ;; ----------------
@@ -397,16 +404,18 @@
 ;; Elixir - Alchemist
 ;; ------------------
 
-(setq alchemist-mix-command "/usr/local/bin/mix")
-(setq alchemist-iex-program-name "/usr/local/bin/iex")
-(setq alchemist-execute-command "/usr/local/bin/elixir")
-(setq alchemist-compile-command "/usr/local/bin/elixirc")
+(setq alchemist-goto-erlang-source-dir "~/code/github-non-dam/otp-OTP-19.3")
+(setq alchemist-goto-elixir-source-dir "~/code/github-non-dam/elixir-1.4.2")
+;; (setq alchemist-mix-command "/usr/local/bin/mix")
+;; (setq alchemist-iex-program-name "/usr/local/bin/iex")
+;; (setq alchemist-execute-command "/usr/local/bin/elixir")
+;; (setq alchemist-compile-command "/usr/local/bin/elixirc")
 
 
 ;; ELM
 ;; ---
 
-(add-hook 'elm-mode-hook 'auto-complete-mode)
+;; (add-hook 'elm-mode-hook 'auto-complete-mode)
 
 
 ;; LaTeX - AucTeX

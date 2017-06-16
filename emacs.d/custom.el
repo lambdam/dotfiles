@@ -88,6 +88,7 @@
  '(syslog-warn-face
    (quote
     ((t :background unspecified :foreground "#FD971F" :weight bold))))
+ '(tab-width 2)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
