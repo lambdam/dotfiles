@@ -62,6 +62,9 @@
      ("melpa" . "https://melpa.org/packages/")
      ("marmalade" . "http://marmalade-repo.org/packages/")
      ("melpa-stable" . "https://stable.melpa.org/packages/"))))
+ '(package-selected-packages
+   (quote
+    (alchemist lua-mode tuareg smooth-scrolling smex rainbow-delimiters projectile paredit neotree multiple-cursors monokai-theme markdown-mode magit ido-vertical-mode ido-ubiquitous highlight-parentheses helm-git-grep helm-ag helm haskell-mode git-gutter+ fuzzy flx-ido flx fill-column-indicator evil emmet-mode cider auto-complete)))
  '(projectile-global-mode t)
  '(scss-compile-at-save nil)
  '(sh-indentation 2)
