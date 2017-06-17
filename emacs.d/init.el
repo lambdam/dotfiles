@@ -1,12 +1,15 @@
+(defvar using-linux? (or (eq system-type 'gnu)
+                         (eq system-type 'gnu/linux)))
+
+(defvar using-mac? (eq system-type 'darwin))
+
 (require 'package)
 
 ;; Packages
 ;; ========
 
 (defvar dam-packages
-  '(
-    ;; auto-complete
-    cider
+  '(cider
     clj-refactor
     clojure-mode
     company
@@ -14,10 +17,9 @@
     evil
     exec-path-from-shell
     fill-column-indicator
-    flx
     flx-ido
     fuzzy
-    ;; git-gutter+
+    git-gutter
     haskell-mode
     helm
     helm-ag
@@ -35,22 +37,16 @@
     rainbow-delimiters
     ruby-mode
     smex
-    ;; smooth-scroll
-    smooth-scrolling
-    tuareg ;; OCaml mode
     undo-tree
     which-key)
   "Dam packages")
 
 ;; Emacs >= 24.4
-;; (add-to-list 'package-pinned-packages '(auto-complete . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(clojure-mode . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(evil . "melpa-stable") t)
-(add-to-list 'package-pinned-packages '(flx . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(flx-ido . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(fuzzy . "melpa-stable") t)
-;; (add-to-list 'package-pinned-packages '(git-gutter+ . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(haskell-mode . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(helm . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(helm-ag . "melpa-stable") t)
@@ -64,7 +60,6 @@
 (add-to-list 'package-pinned-packages '(projectile . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(rainbow-delimiters . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(smex . "melpa-stable") t)
-(add-to-list 'package-pinned-packages '(tuareg . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(which-key . "melpa-stable") t)
 
 ;; On a freshly installed Emacs: `M-x` -> `dam-install-packages`
@@ -89,16 +84,19 @@
 ;; Emacs configuration
 ;; ===================
 
-;; Set up load path
-;; (add-to-list 'load-path user-emacs-directory t)
+;; Fonts
+;; http://ergoemacs.org/emacs/emacs_list_and_set_font.html
+(cond
+ (using-linux? (when (member "Fira Mono" (font-family-list))
+                 (add-to-list 'initial-frame-alist '(font . "Fira Mono"))
+                 (add-to-list 'default-frame-alist '(font . "Fira Mono")))))
 
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (package-initialize)
 ;; exec-path-from-shell
-(when (memq window-system '(mac ns))
+(when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
-;; ---
 (load custom-file)
 
 ;; Turn off mouse interface early in startup to avoid momentary display
@@ -155,26 +153,31 @@
 ;; ===================
 
 ;; For Mac OS rebind meta to function key
-(when (eq system-type 'darwin)
+(when using-mac?
   ;; (setq mac-function-modifier 'meta)
   ;; (setq mac-option-modifier 'none))
   (setq mac-left-option-modifier 'meta)
   (setq mac-right-option-modifier 'none)
   (setq ns-use-native-fullscreen nil)
-  (global-set-key [f9] 'toggle-frame-fullscreen)
-  )
+  (global-set-key [f9] 'toggle-frame-fullscreen))
 
 ;; Linux specific
-(when (or (eq system-type 'gnu)
-          (eq system-type 'gnu/linux))
-  (global-set-key [f11] 'fullscreen-mode-fullscreen-toggle)
-  (global-set-key (kbd "<menu>") 'smex))
+(when using-linux?
+  ;; (global-set-key [f11] 'fullscreen-mode-fullscreen-toggle)
+  ;; (global-set-key (kbd "<menu>") 'smex)
+  )
 
 ;; Move cursor easily between windows
-(global-set-key (kbd "<M-A-left>") 'windmove-left)
-(global-set-key (kbd "<M-A-right>") 'windmove-right)
-(global-set-key (kbd "<M-A-up>") 'windmove-up)
-(global-set-key (kbd "<M-A-down>") 'windmove-down)
+(when using-mac?
+  (global-set-key (kbd "<M-A-left>") 'windmove-left)
+  (global-set-key (kbd "<M-A-right>") 'windmove-right)
+  (global-set-key (kbd "<M-A-up>") 'windmove-up)
+  (global-set-key (kbd "<M-A-down>") 'windmove-down))
+(when using-linux?
+  (global-set-key (kbd "<C-s-left>") 'windmove-left)
+  (global-set-key (kbd "<C-s-right>") 'windmove-right)
+  (global-set-key (kbd "<C-s-up>") 'windmove-up)
+  (global-set-key (kbd "<C-s-down>") 'windmove-down))
 
 ;; Resize windows
 (global-set-key (kbd "<C-S-up>") 'shrink-window)
@@ -209,11 +212,12 @@
 (require 'ido-ubiquitous)
 (require 'flx-ido)
 (require 'ido-vertical-mode)
+(ido-mode 1)
 (setq ido-enable-flex-matching t
       ido-use-virtual-buffers t)
-(ido-mode +1)
-(ido-ubiquitous-mode +1)
-(ido-vertical-mode +1)
+(ido-ubiquitous-mode 1)
+(ido-vertical-mode 1)
+
 
 ;; SMEX
 ;; ----
@@ -223,15 +227,6 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-;; Smooth scrolling
-;; ----------------
-
-(require 'smooth-scrolling)
-;; (setq scroll-step 1)
-;; (setq scroll-conservatively 1000)
-;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-;; (setq mouse-wheel-progressive-speed nil)
-;; (setq mouse-wheel-follow-mouse t)
 
 ;; Nice scrolling
 (setq
@@ -239,24 +234,12 @@
  scroll-conservatively 100000
  scroll-preserve-screen-position 1)
 
-;; Smooth scroll
-;; -------------
-
-;; (require 'smooth-scroll)
-;; (smooth-scroll-mode 'toggle)
 
 ;; Company mode
 ;; ------------
 
 (add-hook 'after-init-hook 'global-company-mode)
 
-;; Autocomplete
-;; ------------
-
-;; (require 'auto-complete)
-;; (ac-flyspell-workaround)
-;; (ac-linum-workaround)
-;; (global-auto-complete-mode t)
 
 ;; Multiple cursors
 ;; ----------------
@@ -266,10 +249,6 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-;; Dired plus
-;; ----------
-
-;; (toggle-diredp-find-file-reuse-dir 1)
 
 ;; Ibuffer
 ;; -------
@@ -277,12 +256,6 @@
 ;; Use Ibuffer instead of Buffer List
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-;; Git gutter plus
-;; ---------------
-
-;; (add-hook 'prog-mode-hook 'git-gutter+-mode)
-;; (eval-after-load 'git-gutter+
-;;   '(require git-gutter-fringe+))
 
 ;; Magit
 ;; -----
@@ -290,16 +263,11 @@
 (setq magit-auto-revert-mode nil)
 (setq magit-last-seen-setup-instructions "1.4.0")
 
+
 ;; Neotree
 ;; -------
 
 (global-set-key [f8] 'neotree-toggle)
-
-
-;; Fill Column Indicator
-;; ---------------------
-
-;; (add-hook 'prog-mode-hook 'fci-mode)
 
 
 ;; Which-key
@@ -307,6 +275,14 @@
 
 (require 'which-key)
 (which-key-mode)
+
+
+;; Org mode
+
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
 
 
 ;; Language modes

@@ -66,7 +66,7 @@
      ("melpa-stable" . "https://stable.melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (alchemist lua-mode tuareg smooth-scrolling smex rainbow-delimiters projectile paredit neotree multiple-cursors monokai-theme markdown-mode magit ido-vertical-mode ido-ubiquitous highlight-parentheses helm-git-grep helm-ag helm haskell-mode git-gutter+ fuzzy flx-ido flx fill-column-indicator evil emmet-mode cider auto-complete)))
+    (org which-key exec-path-from-shell clj-refactor ido-grid-mode git-gutter alchemist lua-mode tuareg smooth-scrolling smex rainbow-delimiters projectile paredit neotree multiple-cursors monokai-theme markdown-mode magit ido-vertical-mode ido-ubiquitous highlight-parentheses helm-git-grep helm-ag helm haskell-mode git-gutter+ fuzzy flx-ido flx fill-column-indicator evil emmet-mode cider auto-complete)))
  '(projectile-global-mode t)
  '(scss-compile-at-save nil)
  '(sh-indentation 2)
