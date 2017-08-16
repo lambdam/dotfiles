@@ -14,6 +14,11 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Load Debian menu entries
 require("debian.menu")
 
+-- Begin custom widget
+require("battery")
+require("volume")
+-- End custom widget
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -219,6 +224,8 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
+            volume_widget, -- custom widget
+            battery_widget, -- custom widget
             mytextclock,
             s.mylayoutbox,
         },
@@ -332,7 +339,11 @@ globalkeys = awful.util.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+    -- Begin custom keys
+    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q sset Master 10%-") end),
+    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q sset Master 10%+") end)
+    -- Begin custom keys
 )
 
 clientkeys = awful.util.table.join(
@@ -547,3 +558,7 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- Dam code
+os.execute("synclient touchpadoff=1")
+os.execute("setxkbmap -option compose:caps")
