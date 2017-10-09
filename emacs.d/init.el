@@ -25,7 +25,7 @@
     helm-ag
     helm-git-grep
     highlight-parentheses
-    ido-ubiquitous
+    ido-completing-read+
     ido-vertical-mode
     magit
     markdown-mode
@@ -52,7 +52,7 @@
 (add-to-list 'package-pinned-packages '(helm-ag . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(helm-git-grep . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(highlight-parentheses . "melpa-stable") t)
-(add-to-list 'package-pinned-packages '(ido-ubiquitous . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(ido-completing-read+ . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(ido-vertical-mode . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(magit . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(multiple-cursors . "melpa-stable") t)
@@ -208,15 +208,18 @@
 ;; IDO
 ;; ---
 
-(require 'ido)
-(require 'ido-ubiquitous)
-(require 'flx-ido)
-(require 'ido-vertical-mode)
 (ido-mode 1)
+(ido-everywhere 1)
+(require 'ido-completing-read+)
+(ido-ubiquitous-mode 1)
 (setq ido-enable-flex-matching t
       ido-use-virtual-buffers t)
-(ido-ubiquitous-mode 1)
 (ido-vertical-mode 1)
+
+;; (require 'ido)
+;; (require 'ido-ubiquitous)
+;; (require 'flx-ido)
+;; (require 'ido-vertical-mode)
 
 
 ;; SMEX
@@ -380,8 +383,8 @@
 ;; Elixir - Alchemist
 ;; ------------------
 
-(setq alchemist-goto-erlang-source-dir "~/code/github-non-dam/otp-OTP-19.3")
-(setq alchemist-goto-elixir-source-dir "~/code/github-non-dam/elixir-1.4.2")
+(setq alchemist-goto-erlang-source-dir "~/code/github-non-dam/otp-OTP-20.0")
+(setq alchemist-goto-elixir-source-dir "~/code/github-non-dam/elixir-1.5.1")
 ;; (setq alchemist-mix-command "/usr/local/bin/mix")
 ;; (setq alchemist-iex-program-name "/usr/local/bin/iex")
 ;; (setq alchemist-execute-command "/usr/local/bin/elixir")
@@ -409,3 +412,18 @@
 (setq reftex-plug-into-AUCTeX t)
 
 (setq TeX-PDF-mode t)
+
+
+;; Custom functions/macros
+;; =======================
+
+(defmacro ->> (&rest body)
+  (let ((result (pop body)))
+    (dolist (form body result)
+      (setq result (append form (list result))))))
+
+(defmacro -> (&rest body)
+  (let ((result (pop body)))
+    (dolist (form body result)
+      (setq result (append (list (car form) result)
+                           (cdr form))))))

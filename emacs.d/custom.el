@@ -19,10 +19,18 @@
  '(custom-enabled-themes (quote (monokai)))
  '(custom-safe-themes
    (quote
-    ("776e35f5a92988a39582ca20b528a98685bf6d441950d5363254705697068fb4" "bd88c659ca050475ae773848adb29720b99c2983450cf21cab6b357d9b1a40e5" "690a0889f56a53c9e4137a3a6c43a164030f67a675486ba592c7b1a02d4c518e" "bd115791a5ac6058164193164fd1245ac9dc97207783eae036f0bfc9ad9670e0" "a0be8cc2d04108146aa14c493071b88578157a11bd2ef0d85e3ca34b5f2205c5" "338f622cba1f52523b57dddbb6ec255196ba1dbfce490aa2fed5ce0b038ce9af" "7f2b040545a8795c441aaab8592dc82219be5c545394aa44dac5a3ae551d5f09" "c6a6b4d59dc53d407432e4f936c49bf747e304683cc357abe32398af7c6dea33" "73fe242ddbaf2b985689e6ec12e29fab2ecd59f765453ad0e93bc502e6e478d6" "0e121ff9bef6937edad8dfcff7d88ac9219b5b4f1570fd1702e546a80dba0832" default)))
+    ("07fa1dd851542c305c7f83651ed8a6f306fc0d3e6406c2154ada53399688d0e0" "e674a5d6b70d38ac5c66a6bfdfc68e12c33a276a6863791f0c29f17cf20b9c53" "dbc36265f8078e5b36e907b7753cd5b538f702f9f1be398d17ff9c5b442fe8cf" "17abe119cdae7472a0027ac5fd91275b4d391cd07579d4ae76bd0667d172197c" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" "776e35f5a92988a39582ca20b528a98685bf6d441950d5363254705697068fb4" "bd88c659ca050475ae773848adb29720b99c2983450cf21cab6b357d9b1a40e5" "690a0889f56a53c9e4137a3a6c43a164030f67a675486ba592c7b1a02d4c518e" "bd115791a5ac6058164193164fd1245ac9dc97207783eae036f0bfc9ad9670e0" "a0be8cc2d04108146aa14c493071b88578157a11bd2ef0d85e3ca34b5f2205c5" "338f622cba1f52523b57dddbb6ec255196ba1dbfce490aa2fed5ce0b038ce9af" "7f2b040545a8795c441aaab8592dc82219be5c545394aa44dac5a3ae551d5f09" "c6a6b4d59dc53d407432e4f936c49bf747e304683cc357abe32398af7c6dea33" "73fe242ddbaf2b985689e6ec12e29fab2ecd59f765453ad0e93bc502e6e478d6" "0e121ff9bef6937edad8dfcff7d88ac9219b5b4f1570fd1702e546a80dba0832" default)))
  '(ecb-layout-name "left13")
  '(ecb-options-version "2.40")
  '(ecb-windows-width 0.3)
+ '(elm-indent-after-keywords
+   (quote
+    (("of" 2)
+     ("in" 2 0)
+     ("{" 2)
+     "if" "then" "else" "let")))
+ '(elm-indent-offset 2)
+ '(elm-indent-rhs-align-column 0)
  '(emmet-indentation 2)
  '(fci-rule-color "#49483E")
  '(fringe-mode (quote (4 . 0)) nil (fringe))
@@ -57,6 +65,7 @@
  '(magit-use-overlays nil)
  '(markdown-indent-on-enter nil)
  '(neo-window-width 35)
+ '(nginx-indent-level 2)
  '(nxml-attribute-indent 2)
  '(package-archives
    (quote
@@ -66,8 +75,12 @@
      ("melpa-stable" . "https://stable.melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (org which-key exec-path-from-shell clj-refactor ido-grid-mode git-gutter alchemist lua-mode tuareg smooth-scrolling smex rainbow-delimiters projectile paredit neotree multiple-cursors monokai-theme markdown-mode magit ido-vertical-mode ido-ubiquitous highlight-parentheses helm-git-grep helm-ag helm haskell-mode git-gutter+ fuzzy flx-ido flx fill-column-indicator evil emmet-mode cider auto-complete)))
+    (ido-completing-read+ nginx-mode ag yaml-mode pug-mode elm-mode org which-key exec-path-from-shell clj-refactor ido-grid-mode git-gutter alchemist lua-mode tuareg smooth-scrolling smex rainbow-delimiters projectile paredit neotree multiple-cursors monokai-theme markdown-mode magit ido-vertical-mode highlight-parentheses helm-git-grep helm-ag helm haskell-mode git-gutter+ fuzzy flx-ido flx fill-column-indicator evil emmet-mode cider auto-complete)))
  '(projectile-global-mode t)
+ '(safe-local-variable-values
+   (quote
+    ((cider-refresh-after-fn . "integrant.repl/resume")
+     (cider-refresh-before-fn . "integrant.repl/suspend"))))
  '(scss-compile-at-save nil)
  '(sh-indentation 2)
  '(smooth-scroll/vscroll-step-size 8)
