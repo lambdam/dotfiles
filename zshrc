@@ -135,6 +135,9 @@ alias postgres-start="postgres -D /usr/local/var/postgres"
 # Git Annex
 # alias ga="git annex"
 
+# Docker
+alias dc=docker-compose
+
 ################################################################################
 # Per program
 ################################################################################
