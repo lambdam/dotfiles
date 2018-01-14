@@ -15,11 +15,12 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 require("awful.hotkeys_popup.keys")
 
 -- Load Debian menu entries
-require("debian.menu")
+local debian = require("debian.menu")
 
 -- Begin custom widget
-require("battery")
-require("volume")
+local battery_widget = require("battery")
+local pipe_sprtr = wibox.widget.textbox()
+pipe_sprtr:set_text(" | ")
 -- End custom widget
 
 -- {{{ Error handling
@@ -227,8 +228,15 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
-            volume_widget, -- custom widget
-            battery_widget, -- custom widget
+            pipe_sprtr,
+            battery_widget,
+            pipe_sprtr,
+            -- ram_widget, -- custom widget
+            -- cpu_widget, -- custom widget
+            -- volume_sptr, -- custom widget
+            -- volumearc_widget, -- custom widget
+            -- battery_sptr, -- custom widget
+            -- batteryarc_widget, -- custom widget
             mytextclock,
             s.mylayoutbox,
         },
