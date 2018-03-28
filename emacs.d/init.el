@@ -242,6 +242,9 @@
 ;; ------------
 
 (add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'company-mode-hook
+          (lambda ()
+            (define-key company-mode-map (kbd "<print>") 'company-complete)))
 
 
 ;; Multiple cursors
@@ -305,6 +308,7 @@
 (add-to-list 'auto-mode-alist '("\\.cljx\\'" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode))
 (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.ram\\'" . clojure-mode))
 (add-hook 'clojure-mode-hook 'highlight-parentheses-mode)
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
@@ -355,6 +359,20 @@
 ;; (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
 ;; (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)
 
+
+;; OCaml
+;; -----
+
+(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+ (when (and opam-share (file-directory-p opam-share))
+  (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
+  (autoload 'merlin-mode "merlin" nil t nil)
+  (add-hook 'tuareg-mode-hook 'merlin-mode t)
+  (add-hook 'caml-mode-hook 'merlin-mode t)))
+
+(with-eval-after-load 'company
+  (add-to-list 'company-backends 'merlin-company-backend))
+
 ;; Ruby
 ;; ----
 
@@ -397,6 +415,13 @@
 ;; (add-hook 'elm-mode-hook 'auto-complete-mode)
 
 
+;; Wisp
+;; ----
+
+;;(add-hook 'wispjs-mode-hook 'paredit-mode)
+;;(add-hook 'wispjs-mode-hook 'rainbow-delimiters-mode)
+
+
 ;; LaTeX - AucTeX
 ;; --------------
 
@@ -412,6 +437,31 @@
 (setq reftex-plug-into-AUCTeX t)
 
 (setq TeX-PDF-mode t)
+
+;; Markdown
+;; --------
+
+(eval-after-load "markdown-mode"
+  '(defalias 'markdown-add-xhtml-header-and-footer 'as/markdown-add-xhtml-header-and-footer))
+
+(defun as/markdown-add-xhtml-header-and-footer (title)
+    "Wrap XHTML header and footer with given TITLE around current buffer."
+    (goto-char (point-min))
+    (insert "<!DOCTYPE html5>\n"
+      "<html>\n"
+      "<head>\n<title>")
+    (insert title)
+    (insert "</title>\n")
+    (insert "<meta charset=\"utf-8\" />\n")
+    (when (> (length markdown-css-paths) 0)
+      (insert (mapconcat 'markdown-stylesheet-link-string markdown-css-paths "\n")))
+    (insert "\n</head>\n\n"
+      "<body>\n\n")
+    (goto-char (point-max))
+    (insert "\n"
+      "</body>\n"
+      "</html>\n"))
+
 
 
 ;; Custom functions/macros
