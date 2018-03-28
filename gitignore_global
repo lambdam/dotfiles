@@ -78,3 +78,8 @@ sftp-config.json
 # Clojure
 ################
 .nrepl-history
+
+################
+# PoEdit
+################
+*.mo
