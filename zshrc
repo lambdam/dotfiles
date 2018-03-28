@@ -159,8 +159,8 @@ fi
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-# OPAM
-[[ -d ~/.opam ]] && PATH=$PATH:$HOME/.opam/system/bin
+# OPAM configuration
+. /home/dam/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # Cabal
 PATH=$PATH:$HOME/.cabal/bin
@@ -226,6 +226,3 @@ fi
 
 autoload -Uz compinit
 compinit -u
-
-# OPAM configuration
-. /Users/dam/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
