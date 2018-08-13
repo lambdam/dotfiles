@@ -160,7 +160,8 @@ bar {
 
 ## Dam config start
 
-exec_always --no-startup-id synclient TouchpadOff=1
+# exec_always --no-startup-id synclient TouchpadOff=1
+exec_always --no-startup-id xinput --disable 11
 exec_always --no-startup-id setxkbmap -option compose:caps
 exec_always --no-startup-id nm-applet
 
