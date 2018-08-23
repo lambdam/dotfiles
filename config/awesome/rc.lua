@@ -16,12 +16,11 @@ require("awful.hotkeys_popup.keys")
 
 -- Load Debian menu entries
 local debian = require("debian.menu")
+local has_fdo, freedesktop = pcall(require, "freedesktop")
 
--- Begin custom widget
-local battery_widget = require("battery")
-local pipe_sprtr = wibox.widget.textbox()
-pipe_sprtr:set_text(" | ")
--- End custom widget
+-- Begin: Dam custom widgets
+local battery_widget = require("battery-widget")
+-- End: Dam custom widgets
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -110,11 +109,24 @@ myawesomemenu = {
    { "quit", function() awesome.quit() end}
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Debian", debian.menu.Debian_menu.Debian },
-                                    { "open terminal", terminal }
-                                  }
-                        })
+local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
+local menu_terminal = { "open terminal", terminal }
+
+if has_fdo then
+    mymainmenu = freedesktop.menu.build({
+        before = { menu_awesome },
+        after =  { menu_terminal }
+    })
+else
+    mymainmenu = awful.menu({
+        items = {
+                  menu_awesome,
+                  { "Debian", debian.menu.Debian_menu.Debian },
+                  menu_terminal,
+                }
+    })
+end
+
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
@@ -193,7 +205,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9"}, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -227,16 +239,8 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
+            battery_widget {},
             wibox.widget.systray(),
-            pipe_sprtr,
-            battery_widget,
-            pipe_sprtr,
-            -- ram_widget, -- custom widget
-            -- cpu_widget, -- custom widget
-            -- volume_sptr, -- custom widget
-            -- volumearc_widget, -- custom widget
-            -- battery_sptr, -- custom widget
-            -- batteryarc_widget, -- custom widget
             mytextclock,
             s.mylayoutbox,
         },
@@ -303,7 +307,7 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+    awful.key({ modkey, "Control"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
@@ -350,11 +354,11 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
-    -- Begin custom keys
-    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q sset Master 10%-") end),
-    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q sset Master 10%+") end)
-    -- End custom keys
+      {description = "show the menubar", group = "launcher"}),
+    -- Begin Dam
+    awful.key({ modkey }, "d", function() awful.util.spawn("rofi -show run") end,
+      {description = "show the rofi run menu", group = "launcher"})
+    -- End Dam
 )
 
 clientkeys = gears.table.join(
@@ -398,12 +402,7 @@ clientkeys = gears.table.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end ,
-        {description = "(un)maximize horizontally", group = "client"}),
-    -- Begin custom keys
-    awful.key({ modkey, "Control"}, "t",
-       awful.titlebar.toggle,
-       {description = "Toggle title bar", group = "Clients"})
-    -- End custom keys
+        {description = "(un)maximize horizontally", group = "client"})
 )
 
 -- Bind all key numbers to tags.
@@ -573,8 +572,6 @@ client.connect_signal("request::titlebars", function(c)
         },
         layout = wibox.layout.align.horizontal
     }
-    -- Hide the menubar
-    awful.titlebar.hide(c)
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
@@ -589,6 +586,8 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
--- Dam code
-os.execute("synclient touchpadoff=1")
-os.execute("setxkbmap -option compose:caps")
+--- Dam code
+-- awful.util.spawn_with_shell("synclient touchpadoff=1")
+awful.util.spawn_with_shell("xinput --disable 11")
+awful.util.spawn_with_shell("setxkbmap -option compose:caps")
+-- awful.util.spawn_with_shell("nm-applet")
