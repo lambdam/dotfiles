@@ -66,17 +66,17 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
+    -- awful.layout.suit.tile.left,
+    -- awful.layout.suit.tile.bottom,
+    -- awful.layout.suit.tile.top,
+    -- awful.layout.suit.fair,
+    -- awful.layout.suit.fair.horizontal,
+    -- awful.layout.suit.spiral,
+    -- awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
+    -- awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier,
-    awful.layout.suit.corner.nw,
+    -- awful.layout.suit.corner.nw,
     awful.layout.suit.floating,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
@@ -357,7 +357,13 @@ globalkeys = gears.table.join(
       {description = "show the menubar", group = "launcher"}),
     -- Begin Dam
     awful.key({ modkey }, "d", function() awful.util.spawn("rofi -show run") end,
-      {description = "show the rofi run menu", group = "launcher"})
+      {description = "show the rofi run menu", group = "launcher"}),
+    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("pactl set-sink-volume 0 +5%") end,
+      {description = "raise volume by 5%", group = "multimedia"}),
+    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("pactl set-sink-volume 0 -5%") end,
+      {description = "lower volume by 5%", group = "multimedia"}),
+    awful.key({ }, "XF86AudioMute", function () awful.util.spawn("pactl set-sink-mute 0 toggle") end,
+      {description = "toggle mute", group = "multimedia"})
     -- End Dam
 )
 
@@ -402,7 +408,11 @@ clientkeys = gears.table.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end ,
-        {description = "(un)maximize horizontally", group = "client"})
+        {description = "(un)maximize horizontally", group = "client"}),
+    -- Begin Dam keys
+    -- https://github.com/awesomeWM/awesome/issues/1588
+    awful.key({ modkey, "Shift"}, "d", awful.titlebar.toggle, {description = "toggle decoration", group = "client"})
+    -- End Dam keys
 )
 
 -- Bind all key numbers to tags.
@@ -476,6 +486,10 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
+                     -- Begin Dam code
+                     -- https://github.com/awesomeWM/awesome/issues/1588
+                     titlebars_enabled = true,   -- Emit signal request::titlebars
+                     -- End Dam code
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
     },
@@ -514,6 +528,16 @@ awful.rules.rules = {
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
+
+    -- Begin Dam code
+    -- https://github.com/awesomeWM/awesome/issues/1588
+    -- Show titlebar on some window types
+    -- {   rule_any   = { type = {"utility", "splash", "toolbar"} },
+    --     properties = { floating = true,
+    --                    show_titlebar = true
+    --     }
+    -- },
+    -- End Dam code
 }
 -- }}}
 
@@ -572,6 +596,12 @@ client.connect_signal("request::titlebars", function(c)
         },
         layout = wibox.layout.align.horizontal
     }
+
+    -- Begin Dam code
+    -- https://github.com/awesomeWM/awesome/issues/1588
+    -- Hide created titlebar
+    awful.titlebar.hide(c)
+    -- End Dam code
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
@@ -586,8 +616,9 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
---- Dam code
+--- Begin Dam code
 -- awful.util.spawn_with_shell("synclient touchpadoff=1")
-awful.util.spawn_with_shell("xinput --disable 11")
+-- awful.util.spawn_with_shell("xinput --disable 11")
 awful.util.spawn_with_shell("setxkbmap -option compose:caps")
--- awful.util.spawn_with_shell("nm-applet")
+awful.util.spawn_with_shell("nm-applet")
+--- End Dam code

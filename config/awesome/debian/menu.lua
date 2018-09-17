@@ -17,6 +17,9 @@ Debian_menu["Debian_Applications_Dessin_et_image"] = {
 Debian_menu["Debian_Applications_Éditeurs"] = {
 	{"Xedit","xedit"},
 }
+Debian_menu["Debian_Applications_Gestion_de_fichiers"] = {
+	{"Nemo","/usr/bin/nemo",},
+}
 Debian_menu["Debian_Applications_Interpréteurs_de_commandes"] = {
 	{"Bash", "x-terminal-emulator -e ".."/bin/bash --login"},
 	{"Dash", "x-terminal-emulator -e ".."/bin/dash -i"},
@@ -24,7 +27,9 @@ Debian_menu["Debian_Applications_Interpréteurs_de_commandes"] = {
 	{"Zsh", "x-terminal-emulator -e ".."/bin/zsh"},
 }
 Debian_menu["Debian_Applications_Lecteurs"] = {
+	{"Pix Image Viewer","/usr/bin/pix","/usr/share/pixmaps/pix.xpm"},
 	{"Xditview","xditview"},
+	{"Xviewer","/usr/bin/xviewer","/usr/share/pixmaps/gnome-xviewer.xpm"},
 }
 Debian_menu["Debian_Applications_Programmation"] = {
 	{"GDB", "x-terminal-emulator -e ".."/usr/bin/gdb"},
@@ -33,15 +38,11 @@ Debian_menu["Debian_Applications_Réseau_Communication"] = {
 	{"Telnet", "x-terminal-emulator -e ".."/usr/bin/telnet.netkit"},
 	{"Xbiff","xbiff"},
 }
-Debian_menu["Debian_Applications_Réseau_Navigateurs_web"] = {
-	{"Google Chrome","/opt/google/chrome/google-chrome","/opt/google/chrome/product_logo_32.xpm"},
-}
 Debian_menu["Debian_Applications_Réseau_Transfert_de_fichiers"] = {
 	{"Transmission BitTorrent Client (GTK)","/usr/bin/transmission-gtk","/usr/share/pixmaps/transmission.xpm"},
 }
 Debian_menu["Debian_Applications_Réseau"] = {
 	{ "Communication", Debian_menu["Debian_Applications_Réseau_Communication"] },
-	{ "Navigateurs web", Debian_menu["Debian_Applications_Réseau_Navigateurs_web"] },
 	{ "Transfert de fichiers", Debian_menu["Debian_Applications_Réseau_Transfert_de_fichiers"] },
 }
 Debian_menu["Debian_Applications_Sciences_Mathématiques"] = {
@@ -61,6 +62,10 @@ Debian_menu["Debian_Applications_Système_Administration"] = {
 	{"Xkill","xkill"},
 	{"Xrefresh","xrefresh"},
 }
+Debian_menu["Debian_Applications_Système_Gestionnaires_de_paquets"] = {
+	{"Aptitude Package Manager (text)", "x-terminal-emulator -e ".."/usr/bin/aptitude-curses"},
+	{"Synaptic Package Manager","x-terminal-emulator -e synaptic-pkexec","/usr/share/synaptic/pixmaps/synaptic_32x32.xpm"},
+}
 Debian_menu["Debian_Applications_Système_Matériel"] = {
 	{"Xvidtune","xvidtune"},
 }
@@ -73,25 +78,32 @@ Debian_menu["Debian_Applications_Système_Surveillance"] = {
 }
 Debian_menu["Debian_Applications_Système"] = {
 	{ "Administration", Debian_menu["Debian_Applications_Système_Administration"] },
+	{ "Gestionnaires de paquets", Debian_menu["Debian_Applications_Système_Gestionnaires_de_paquets"] },
 	{ "Matériel", Debian_menu["Debian_Applications_Système_Matériel"] },
 	{ "Surveillance", Debian_menu["Debian_Applications_Système_Surveillance"] },
+}
+Debian_menu["Debian_Applications_Vidéo"] = {
+	{"Xplayer","/usr/bin/xplayer","/usr/share/pixmaps/xplayer.xpm"},
 }
 Debian_menu["Debian_Applications"] = {
 	{ "Accessibilité", Debian_menu["Debian_Applications_Accessibilité"] },
 	{ "Dessin et image", Debian_menu["Debian_Applications_Dessin_et_image"] },
 	{ "Éditeurs", Debian_menu["Debian_Applications_Éditeurs"] },
+	{ "Gestion de fichiers", Debian_menu["Debian_Applications_Gestion_de_fichiers"] },
 	{ "Interpréteurs de commandes", Debian_menu["Debian_Applications_Interpréteurs_de_commandes"] },
 	{ "Lecteurs", Debian_menu["Debian_Applications_Lecteurs"] },
 	{ "Programmation", Debian_menu["Debian_Applications_Programmation"] },
 	{ "Réseau", Debian_menu["Debian_Applications_Réseau"] },
 	{ "Sciences", Debian_menu["Debian_Applications_Sciences"] },
 	{ "Système", Debian_menu["Debian_Applications_Système"] },
+	{ "Vidéo", Debian_menu["Debian_Applications_Vidéo"] },
 }
 Debian_menu["Debian_Gestionnaires_de_fenêtres"] = {
 	{"awesome",function () awesome.exec("/usr/bin/awesome") end,"/usr/share/pixmaps/awesome.xpm"},
 }
 Debian_menu["Debian_Jeux_Jouets"] = {
 	{"Oclock","oclock"},
+	{"Redshift","redshift-gtk"},
 	{"Xclock (analog)","xclock -analog"},
 	{"Xclock (digital)","xclock -digital -update 1"},
 	{"Xeyes","xeyes"},
