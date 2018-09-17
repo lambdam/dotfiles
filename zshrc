@@ -160,6 +160,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 # OPAM configuration
+# . /home/dam/.asdf/installs/ocaml/4.06.1/opam-init/init.zsh > /dev/null 2> /dev/null || true
 . /home/dam/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # Cabal
@@ -184,7 +185,7 @@ if [[ "$CURRENTOS" == "MACOS" ]]; then
   source `brew --prefix`/etc/profile.d/z.sh
 fi
 if [[ "$CURRENTOS" == "LINUX" ]]; then
-  source ~/code/github-non-dam/z/z.sh
+  source ~/code/github/miscellaneous/z/z.sh
 fi
 
 
