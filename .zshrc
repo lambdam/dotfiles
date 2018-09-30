@@ -33,7 +33,7 @@ CASE_SENSITIVE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git npm lein git-annex terraform)
+plugins=(git npm lein git-annex z ocaml terraform)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -133,7 +133,7 @@ alias es6="node --harmony"
 alias postgres-start="postgres -D /usr/local/var/postgres"
 
 # Git Annex
-# alias ga="git annex"
+alias anx="git annex"
 
 # Docker
 alias dc=docker-compose
@@ -181,12 +181,12 @@ source $HOME/.asdf/asdf.sh
 source $HOME/.asdf/completions/asdf.bash
 
 # z
-if [[ "$CURRENTOS" == "MACOS" ]]; then
-  source `brew --prefix`/etc/profile.d/z.sh
-fi
-if [[ "$CURRENTOS" == "LINUX" ]]; then
-  source ~/code/github/miscellaneous/z/z.sh
-fi
+# if [[ "$CURRENTOS" == "MACOS" ]]; then
+#   source `brew --prefix`/etc/profile.d/z.sh
+# fi
+# if [[ "$CURRENTOS" == "LINUX" ]]; then
+#   source ~/code/github/miscellaneous/z/z.sh
+# fi
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
