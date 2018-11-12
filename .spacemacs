@@ -70,7 +70,8 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages
+   '(inf-clojure)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -338,6 +339,17 @@ you should place your code here."
   ;;       kept-old-versions 2
   ;;       version-control t)
   (setq create-lockfiles nil)
+
+  ;; Planck
+  ;; https://github.com/jhbadger/spacemacs-config/blob/master/.spacemacs
+  ;; (add-hook 'clojure-mode-hook #'inf-clojure-minor-mode)
+  ;; (add-hook 'clojurescript-mode-hook #'inf-clojure-minor-mode)
+  (setq inf-clojure-program "planck")
+  (setq inf-clojure-generic-cmd "planck -d")
+  (defun planck ()
+    (interactive)
+    (inf-clojure "planck"))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
