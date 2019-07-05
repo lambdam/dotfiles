@@ -83,3 +83,9 @@ sftp-config.json
 # PoEdit
 ################
 *.mo
+
+################
+# Praditus
+################
+
+mega-repl.sh
