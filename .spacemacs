@@ -41,7 +41,7 @@ values."
      ;; better-defaults
      emacs-lisp
      git
-     ;; neotree
+     neotree
      ;; markdown
      ;; org
      ;; (shell :variables
@@ -52,7 +52,8 @@ values."
      ;; version-control
 
      ;; Custom code here
-     clojure
+     (clojure :variables
+              clojure-enable-clj-refactor t)
      javascript
      ocaml
      ;; reasonml
@@ -77,7 +78,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages
    '(inf-clojure
-     clj-refactor
+     ;; clj-refactor
      ag
      rg
      dune)
@@ -289,7 +290,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
