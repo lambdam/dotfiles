@@ -364,7 +364,8 @@ globalkeys = gears.table.join(
     awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("pactl set-sink-volume 0 -5%") end,
       {description = "lower volume by 5%", group = "multimedia"}),
     awful.key({ }, "XF86AudioMute", function () awful.util.spawn("pactl set-sink-mute 0 toggle") end,
-      {description = "toggle mute", group = "multimedia"})
+      {description = "toggle mute", group = "multimedia"}),
+    awful.key({ }, "F12", function () awful.util.spawn("xscreensaver-command -lock") end)
     -- End Dam
 )
 
@@ -620,6 +621,8 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --- Begin Dam code
 -- awful.util.spawn_with_shell("synclient touchpadoff=1")
 -- awful.util.spawn_with_shell("xinput --disable 11")
+awful.util.spawn_with_shell("xscreensaver -no-splash")
 awful.util.spawn_with_shell("setxkbmap -option compose:caps")
 awful.util.spawn_with_shell("nm-applet")
+awful.util.spawn_with_shell("blueman-applet")
 --- End Dam code

@@ -41,7 +41,7 @@ values."
      ;; better-defaults
      emacs-lisp
      git
-     neotree
+     ;; neotree
      ;; markdown
      ;; org
      ;; (shell :variables
@@ -401,48 +401,23 @@ you should place your code here."
  '(package-selected-packages
    (quote
     (idris-mode prop-menu company-auctex auctex rg wgrep dune ag graphviz-dot-mode smeargle rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake orgit minitest magit-gitflow magit-popup inf-clojure helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit transient git-commit with-editor lv parseedn parseclj a chruby bundler inf-ruby jinja2-mode company-ansible ansible-doc ansible terraform-mode hcl-mode lua-mode sesman intero hlint-refactor hindent helm-hoogle haskell-snippets company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode toml-mode sql-indent racer pos-tip cargo rust-mode mmm-mode markdown-toc markdown-mode gh-md yaml-mode ob-elixir flycheck-mix flycheck-credo flycheck alchemist elixir-mode helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern dash-functional company-statistics company clojure-snippets auto-yasnippet ac-ispell auto-complete web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode utop tuareg caml tern ocp-indent merlin web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc coffee-mode clj-refactor inflections edn multiple-cursors paredit yasnippet peg cider-eval-sexp-fu cider seq queue clojure-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
- '(pos-tip-background-color "#FFFACE")
- '(pos-tip-foreground-color "#272822")
  '(safe-local-variable-values
    (quote
-    ((cider-ns-refresh-after-fn . "lambdam.core/start-server")
+    ((cider-ns-refresh-after-fn . "dev/resume-system")
+     (cider-ns-refresh-before-fn . "dev/suspend-system")
+     (cider-ns-refresh-after-fn . "lambdam.core/start-server")
      (cider-ns-refresh-before-fn . "lambdam.core/stop-server")
      (cider-ns-refresh-after-fn . "integrant.repl/resume")
      (cider-ns-refresh-before-fn . "integrant.repl/suspend")
      (elixir-enable-compilation-checking . t)
      (elixir-enable-compilation-checking))))
- '(utop-command "opam config exec -- dune utop . -- -emacs")
- '(vc-annotate-background nil)
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#F92672")
-     (40 . "#CF4F1F")
-     (60 . "#C26C0F")
-     (80 . "#E6DB74")
-     (100 . "#AB8C00")
-     (120 . "#A18F00")
-     (140 . "#989200")
-     (160 . "#8E9500")
-     (180 . "#A6E22E")
-     (200 . "#729A1E")
-     (220 . "#609C3C")
-     (240 . "#4E9D5B")
-     (260 . "#3C9F79")
-     (280 . "#A1EFE4")
-     (300 . "#299BA6")
-     (320 . "#2896B5")
-     (340 . "#2790C3")
-     (360 . "#66D9EF"))))
- '(vc-annotate-very-old-color nil)
- '(weechat-color-list
-   (quote
-    (unspecified "#272822" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0"))))
+ '(utop-command "opam config exec -- dune utop . -- -emacs"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822" :family "Fira Mono" :foundry "CTDB" :slant normal :weight normal :height 120 :width normal)) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C" :family "Fira Mono" :foundry "CTDB" :slant normal :weight normal :height 120 :width normal)))))
+ )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use
@@ -488,7 +463,9 @@ This function is called at the very end of Spacemacs initialization."
  '(pos-tip-foreground-color "#272822")
  '(safe-local-variable-values
    (quote
-    ((cider-ns-refresh-after-fn . "integrant.repl/resume")
+    ((cider-ns-refresh-after-fn . "dev/resume-system")
+     (cider-ns-refresh-before-fn . "dev/suspend-system")
+     (cider-ns-refresh-after-fn . "integrant.repl/resume")
      (cider-ns-refresh-before-fn . "integrant.repl/suspend")
      (elixir-enable-compilation-checking . t)
      (elixir-enable-compilation-checking)

@@ -1,0 +1,13 @@
+;; https://gist.github.com/bmag/b2119fde2c316cb0c65342253c924527
+
+;; load configuration from $EMACSDIR/init.el and set $EMACSDIR as
+;; `user-emacs-directory'. if $EMACSDIR is not set, use `~/.emacs.d'.
+(let* ((emacs-dir-env (getenv "EMACSDIR"))
+       (custom-emacs-dir (and emacs-dir-env
+                              (file-name-as-directory emacs-dir-env))))
+  ;; `user-emacs-directory' default value is emacs.d"
+  (when custom-emacs-dir
+    (setq user-emacs-directory custom-emacs-dir)))
+
+(setq user-init-file (expand-file-name "init.el" user-emacs-directory))
+(load user-init-file t)

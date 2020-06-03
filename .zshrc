@@ -33,7 +33,7 @@ CASE_SENSITIVE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git npm lein git-annex z ocaml terraform)
+plugins=(git npm lein git-annex z ocaml terraform rust)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -138,6 +138,9 @@ alias anx="git annex"
 # Docker
 alias dc=docker-compose
 
+# fdfind
+alias fd=fdfind
+
 ################################################################################
 # Per program
 ################################################################################
@@ -161,7 +164,8 @@ export PATH=$PATH:$GOPATH/bin
 
 # OPAM configuration
 # . /home/dam/.asdf/installs/ocaml/4.06.1/opam-init/init.zsh > /dev/null 2> /dev/null || true
-. /home/dam/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+test -r /home/dam/.opam/opam-init/init.zsh && . /home/dam/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
 
 # Cabal
 PATH=$PATH:$HOME/.cabal/bin
@@ -180,6 +184,9 @@ fi
 source $HOME/.asdf/asdf.sh
 source $HOME/.asdf/completions/asdf.bash
 
+# Haskell stack
+export PATH=$PATH:$HOME/.local/bin
+
 # z
 # if [[ "$CURRENTOS" == "MACOS" ]]; then
 #   source `brew --prefix`/etc/profile.d/z.sh
@@ -190,7 +197,6 @@ source $HOME/.asdf/completions/asdf.bash
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
-
 
 ################################################################################
 # Per computer
@@ -231,3 +237,5 @@ fi
 
 autoload -Uz compinit
 compinit -u
+
+source /home/dam/.config/broot/launcher/bash/br

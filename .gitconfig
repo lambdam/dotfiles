@@ -26,7 +26,7 @@
     fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
     ffixup = !sh -c 'git commit --fixup="$1" && git rebase --interactive --autosquash "$1"~1' -
     squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
-    ri = rebase --interactive --autosquash --committer-date-is-author-date
+    ri = rebase --interactive --autosquash # --committer-date-is-author-date
     ap = add --patch
     poule = pull --rebase
 
