@@ -33,7 +33,7 @@ CASE_SENSITIVE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git npm lein git-annex z ocaml terraform rust)
+plugins=(git git-annex fzf z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -141,6 +141,9 @@ alias dc=docker-compose
 # fdfind
 alias fd=fdfind
 
+# Touchpad fix
+alias touchpadFix='synclient Touchpadoff=0 ; synclient HorizTwoFingerScroll=1; synclient PalmDetect=1;'
+
 ################################################################################
 # Per program
 ################################################################################
@@ -187,7 +190,7 @@ source $HOME/.asdf/completions/asdf.bash
 # Haskell stack
 export PATH=$PATH:$HOME/.local/bin
 
-# z
+# z jump around
 # if [[ "$CURRENTOS" == "MACOS" ]]; then
 #   source `brew --prefix`/etc/profile.d/z.sh
 # fi
