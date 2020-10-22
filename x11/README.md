@@ -1,1 +1,1 @@
-copy the file to /etc/X11/xorg.conf.d
+copy the file to /usr/share/X11/xorg.conf.d
