@@ -97,4 +97,8 @@ mega-repl.sh
 
 .tool-versions
 
+################
+# Intellij IDEA
+################
 
+.idea/
