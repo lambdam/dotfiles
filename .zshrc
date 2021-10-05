@@ -240,6 +240,8 @@ export PATH=$PATH:$HOME/.local/bin
 # fi
 # if [[ "$CURRENTOS" == "LINUX" ]]; then
 #   source ~/code/github/miscellaneous/z/z.sh
+# fi
+#
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
