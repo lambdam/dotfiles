@@ -49,7 +49,7 @@ This function should only modify configuration layer settings."
      (clojure :variables
               ;; clojure-enable-linters '(clj-kondo joker)
               clojure-enable-linters 'clj-kondo
-              clojure-backend 'cider
+              clojure-backend 'lsp ;; 'cider
               ;; clojure-enable-sayid t
               clojure-enable-clj-refactor t)
      (ocaml :variables ocaml-format-on-save t)
@@ -81,7 +81,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(html-to-hiccup ag rg)
+   dotspacemacs-additional-packages '(html-to-hiccup ag rg fira-code-mode)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -520,6 +520,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (global-fira-code-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
