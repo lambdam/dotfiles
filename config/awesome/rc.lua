@@ -357,7 +357,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "p", function() menubar.show() end,
       {description = "show the menubar", group = "launcher"}),
     -- Begin Dam
-    awful.key({ modkey }, "d", function() awful.util.spawn("rofi -show run") end,
+    awful.key({ modkey }, "d", function() awful.util.spawn("zsh -c \"rofi -show run\"") end,
       {description = "show the rofi run menu", group = "launcher"}),
     awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("pactl set-sink-volume 0 +5%") end,
       {description = "raise volume by 5%", group = "multimedia"}),
