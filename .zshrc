@@ -279,6 +279,9 @@ export PATH="$PATH:$HOME/local/bin"
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+# Flatpak
+export PATH="/var/lib/flatpak/exports/bin:$PATH"
+
 ################################################################################
 # Completions
 ################################################################################
