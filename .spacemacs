@@ -32,9 +32,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(rust
-     csv
-     ;; ----------------------------------------------------------------
+   '(;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
@@ -43,25 +41,28 @@ This function should only modify configuration layer settings."
      ;; better-defaults
      emacs-lisp
      org
+     rust
+     csv
      git
      helm
      latex
      (clojure :variables
               ;; clojure-enable-linters '(clj-kondo joker)
               clojure-enable-linters 'clj-kondo
-              clojure-backend 'lsp ;; 'cider
+              clojure-backend 'cider
               ;; clojure-enable-sayid t
               clojure-enable-clj-refactor t)
      (ocaml :variables ocaml-format-on-save t)
-     (reasonml :variables reason-auto-refmt t)
+     ;; (reasonml :variables reason-auto-refmt t)
      (haskell :variables haskell-completion-backend 'dante)
-     (fsharp :variables fsharp-backend 'lsp)
+     ;; (fsharp :variables fsharp-backend 'lsp)
      graphviz
      ;; lsp
      markdown
      html
      yaml
-     ;; multiple-cursors
+     ;; racket
+     multiple-cursors
      (javascript :variables javascript-repl `nodejs)
      ;; org
      ;; (shell :variables
@@ -520,7 +521,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  (global-fira-code-mode)
+  ;; (add-hook 'clojure-mode-hook #'fira-code-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -554,6 +555,7 @@ This function is called at the very end of Spacemacs initialization."
      ("#A75B00" . 70)
      ("#F309DF" . 85)
      ("#3C3D37" . 100))))
+ '(js-indent-level 2)
  '(lsp-ui-doc-enable nil t)
  '(lsp-ui-peek-enable t)
  '(lsp-ui-sideline-enable nil t)
@@ -619,5 +621,5 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(merlin-type-face ((t (:inherit caml-types-expr-face :background "gray35")))))
 )
