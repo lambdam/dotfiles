@@ -12,3 +12,6 @@ emacs:
 	mkdir ~/.emacs.d/
 	ln -sf $(shell pwd)/emacs.d/init.el ~/.emacs.d/init.el
 	ln -sf $(shell pwd)/emacs.d/custom.el ~/.emacs.d/custom.el
+
+ocaml-opam:
+	opam user-setup install
