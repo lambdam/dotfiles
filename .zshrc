@@ -182,9 +182,6 @@ alias anx="git annex"
 # Docker
 alias dc=docker-compose
 
-# fdfind
-alias fd=fdfind
-
 # Touchpad fix
 alias touchpadFix='synclient Touchpadoff=0 ; synclient HorizTwoFingerScroll=1; synclient PalmDetect=1;'
 
@@ -295,7 +292,7 @@ fi
 autoload -Uz compinit
 compinit -u
 
-source /home/dam/.config/broot/launcher/bash/br
+# source /home/dam/.config/broot/launcher/bash/br
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
