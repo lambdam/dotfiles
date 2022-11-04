@@ -47,12 +47,16 @@ This function should only modify configuration layer settings."
      git
      helm
      latex
+     typescript
+     nginx
      (clojure :variables
               ;; clojure-enable-linters '(clj-kondo joker)
               clojure-enable-linters 'clj-kondo
               clojure-backend 'cider
               ;; clojure-enable-sayid t
               clojure-enable-clj-refactor t)
+     (scheme :variables
+             scheme-implementations '(chez guile))
      (ocaml :variables ocaml-format-on-save t)
      ;; (reasonml :variables reason-auto-refmt t)
      (haskell :variables haskell-completion-backend 'dante)
@@ -62,6 +66,7 @@ This function should only modify configuration layer settings."
      markdown
      html
      yaml
+     systemd
      ;; racket
      multiple-cursors
      (javascript :variables javascript-repl `nodejs)
@@ -644,6 +649,8 @@ This function is called at the very end of Spacemacs initialization."
      (cider-ns-refresh-before-fn . "user/stop")
      (cider-ns-refresh-after-fn . "juxt.clip.repl/start")
      (cider-ns-refresh-before-fn . "juxt.clip.repl/stop")))
+ '(typescript-indent-level 2)
+ '(undo-tree-history-directory-alist '(("." . "/tmp/emacs-undo-tree")))
  '(utop-command "opam config exec -- dune utop . -- -emacs")
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
