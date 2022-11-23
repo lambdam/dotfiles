@@ -74,3 +74,18 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; Custom config
+
+;; https://abdelhakbougouffa.pro/posts/config/#which-key
+(after! which-key
+  (setq which-key-idle-delay 0.5 ;; Default is 1.0
+        ;; which-key-idle-secondary-delay 0.05 ;; Default is nil
+        ))
+
+(map! :leader
+      (:prefix ("k" . "smartparens")
+               :desc "Smartparens actions"
+               "s" #'sp-forward-slurp-sexp
+               "b" #'sp-forward-barf-sexp
+               "r" #'sp-raise-sexp))
