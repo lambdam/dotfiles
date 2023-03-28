@@ -167,8 +167,10 @@ if [[ "$CURRENTOS" == "MACOS" ]]; then
   alias mongod="mongod --config ~/dotfiles/mongod.conf"
 fi
 
-# tig
+# Git TUI
 alias tigg="tig --all"
+alias gg="git-graph"
+alias gi="gitui"
 
 # Node.js
 alias es6="node --harmony"
