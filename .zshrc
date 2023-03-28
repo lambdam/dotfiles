@@ -98,7 +98,7 @@ fi
 # Exports
 ################################################################################
 
-export EDITOR=vim
+export EDITOR=nvim
 # export TERM="xterm-256color"
 
 ################################################################################
@@ -185,6 +185,8 @@ alias dc=docker-compose
 # Touchpad fix
 alias touchpadFix='synclient Touchpadoff=0 ; synclient HorizTwoFingerScroll=1; synclient PalmDetect=1;'
 
+alias nv=neovide
+
 ################################################################################
 # Per program
 ################################################################################
@@ -248,6 +250,9 @@ export PATH=$PATH:$HOME/.local/bin
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# Flutter
+export CHROME_EXECUTABLE=$(which chromium) 
 
 ################################################################################
 # Per computer
