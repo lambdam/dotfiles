@@ -15,3 +15,12 @@ emacs:
 
 ocaml-opam:
 	opam user-setup install
+
+switch-to-doom-emacs:
+	rm -f ${HOME}/.emacs.d
+	ln -s ${HOME}/.emacs.d.doom ~/.emacs.d
+
+switch-to-spacemacs:
+	rm -f ${HOME}/.emacs.d
+	ln -s ${HOME}/.emacs.d.spacemacs ~/.emacs.d
+
