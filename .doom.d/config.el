@@ -83,6 +83,9 @@
         ;; which-key-idle-secondary-delay 0.05 ;; Default is nil
         ))
 
+(after! smartparens
+  (setq smartparens-global-strict-mode t))
+
 (map! :leader
       (:prefix ("k" . "smartparens")
                :desc "Smartparens actions"
