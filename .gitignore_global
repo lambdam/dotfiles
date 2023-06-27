@@ -62,7 +62,7 @@ sftp-config.json
 # Emacs
 ################
 .projectile
-*.~undo-tree~
+.*~undo-tree~
 
 ################
 # Ruby
