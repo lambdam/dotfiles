@@ -187,7 +187,9 @@ alias dc=docker-compose
 # Touchpad fix
 alias touchpadFix='synclient Touchpadoff=0 ; synclient HorizTwoFingerScroll=1; synclient PalmDetect=1;'
 
+# Neovide
 alias nv=neovide
+alias y=yazi
 
 ################################################################################
 # Per program
@@ -255,6 +257,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # Flutter
 export CHROME_EXECUTABLE=$(which chromium) 
+
+# Doom Emacs
+export PATH="$HOME/.config/emacs/bin:$PATH"
 
 ################################################################################
 # Per computer
