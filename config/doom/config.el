@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-monokai-spectrum)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -74,3 +74,43 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; https://gist.github.com/ericdallo/09217734a925148976e13b872b91e134
+(setq read-process-output-max (* 1024 1024)
+      doom-localleader-key "," ;; easier than <SPC m>
+      )
+
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+(use-package! lsp-mode
+  :commands lsp
+  :config
+  (setq lsp-semantic-tokens-enable t)
+  (add-hook 'lsp-after-apply-edits-hook (lambda (&rest _) (save-buffer)))) ;; save buffers after renaming
+;; ---
+
+(after! smartparens
+  (add-hook 'clojure-mode-hook #'smartparens-strict-mode))
+
+;; https://clojureverse.org/t/doom-cider-keybindings/7762/5
+;; mapping part of the Spacemacs lisp key map:
+;; https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.org#editing-lisp-code
+;; https://rameezkhan.me/adding-keybindings-to-doom-emacs/
+(map! :leader
+      (:prefix-map ("k" . "smartparens-mode")
+        :desc "forward slurp" "s" #'sp-forward-slurp-sexp
+        :desc "backward slurp" "S" #'sp-backward-slurp-sexp
+        :desc "forward barf" "b" #'sp-forward-barf-sexp
+        :desc "backward barf" "B" #'sp-backward-barf-sexp
+        :desc "raise" "r" #'sp-raise-sexp
+        :desc "unwrap & kill after" "e" #'sp-unwrap-sexp
+        :desc "unwrap & kill before" "E" #'sp-backward-unwrap-sexp
+        :desc "transpose" "t" #'sp-transpose-sexp
+        ;; :desc "sp-forward-sexp" "L" #'sp-forward-sexp
+        ;; :desc "sp-backward-sexp" "H" #'sp-backward-sexp
+        ;; "C-M-u" #'sp-backward-up-sexp
+        ;; "C-M-d" #'sp-down-sexp
+        ;; "C-M-p" #'sp-backward-down-sexp
+        ;; "C-M-n" #'sp-up-sexp
+        ;; "C-M-s" #'sp-splice-sexp
+        ))
