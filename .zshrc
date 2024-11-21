@@ -73,7 +73,9 @@ ZSH_THEME="ys"
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-annex fzf z)
+
+# git-annex
+plugins=(git fzf)
 # Add wisely, as too many plugins slow down shell startup.
 
 source $ZSH/oh-my-zsh.sh
@@ -120,6 +122,7 @@ alias vlcc="vlc -I ncurses"
 
 # Emacs
 alias gemacs='emacsclient -c -n -a "" -F "((fullscreen . maximized))"'
+alias temacs="emacs --no-window-system"
 
 # Radios
 alias radio-france-inter="mplayer -playlist http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u"
@@ -230,9 +233,11 @@ if [[ "$CURRENTOS" == "MACOS" ]]; then
   . ~/.nix-profile/etc/profile.d/nix.sh
 fi
 
-# asdf
-source $HOME/.asdf/asdf.sh
-source $HOME/.asdf/completions/asdf.bash
+# asdf / mise
+# source $HOME/.asdf/asdf.sh
+# source $HOME/.asdf/completions/asdf.bash
+eval "$(~/.local/bin/mise activate zsh)"
+
 
 # Haskell stack
 export PATH=$PATH:$HOME/.local/bin
@@ -316,3 +321,6 @@ compinit -u
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# zoxide - https://github.com/ajeetdsouza/zoxide
+eval "$(zoxide init zsh)"
