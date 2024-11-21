@@ -1,34 +1,41 @@
 [user]
-    name = Damien Ragoucy
-    email = damien@lambdam.com
+  name = Damien Ragoucy
+  email = damien@lambdam.com
+
 [core]
-    # autocrlf = input
-    # safecrlf = true
+  # autocrlf = input
+  # safecrlf = true
 
 [alias]
-    co = checkout
-    pr = pull --rebase --committer-date-is-author-date
-    ci = commit
-    st = status
-    br = branch
-    # reb = rebase --committer-date-is-author-date
-    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    type = cat-file -t
-    dump = cat-file -p
-    undo = reset --soft HEAD^
-    first-empty-commit = commit --allow-empty -m "Created git project"
-    # t for tree
-    t = log --graph --decorate --pretty=oneline --abbrev-commit
-    tt = log --graph --all --decorate --pretty=oneline --abbrev-commit
-    d = diff
-    ds = diff --staged
-    unstage = reset HEAD --
-    fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
-    ffixup = !sh -c 'git commit --fixup="$1" && git rebase --interactive --autosquash "$1"~1' -
-    squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
-    ri = rebase --interactive --autosquash # --committer-date-is-author-date
-    ap = add --patch
-    poule = pull --rebase
+  co = checkout
+  pr = pull --rebase --committer-date-is-author-date
+  ci = commit
+  st = status
+  br = branch
+  # reb = rebase --committer-date-is-author-date
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+  undo = reset --soft HEAD^
+  first-empty-commit = commit --allow-empty -m "Created git project"
+  # t for tree
+  t = log --graph --decorate --pretty=oneline --abbrev-commit
+  tt = log --graph --all --decorate --pretty=oneline --abbrev-commit
+  d = diff
+  ds = diff --staged
+  unstage = reset HEAD --
+  fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
+  ffixup = !sh -c 'git commit --fixup="$1" && git rebase --interactive --autosquash "$1"~1' -
+  squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
+  ri = rebase --interactive --autosquash # --committer-date-is-author-date
+  ap = add --patch
+  poule = pull --rebase
+  one = "log --color --oneline --decorate"
+  ones = "log --color --oneline --decorate --stat"
+  dcmp = "!f() { git log --graph --color --decorate --boundary --oneline HEAD...$1; }; f"
+  dcmpp = "!f() { git log --graph --color --decorate --boundary --oneline --stat HEAD...$1; }; f"
+  d2cmp = "!f() { git log --graph --color --decorate --boundary --oneline $1...$2; }; f"
+  d2cmpp = "!f() { git log --graph --color --decorate --boundary --oneline --stat $1...$2; }; f"
 
 [push]
     default = tracking
