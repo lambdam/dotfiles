@@ -32,7 +32,9 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(;; ----------------------------------------------------------------
+   '(;; dart
+     ;; lfe
+     ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
@@ -47,34 +49,40 @@ This function should only modify configuration layer settings."
      git
      helm
      latex
-     typescript
+     (typescript :variables
+                 typescript-backend 'lsp)
      nginx
+     erlang
      (clojure :variables
               ;; clojure-enable-linters '(clj-kondo joker)
               clojure-enable-linters 'clj-kondo
               clojure-backend 'cider
+              ;; clojure-backend 'lsp
               ;; clojure-enable-sayid t
               clojure-enable-clj-refactor t)
-     (scheme :variables
-             scheme-implementations '(chez guile))
+     (scheme :variables scheme-implementations '(chez guile))
+     common-lisp
      (ocaml :variables ocaml-format-on-save t)
      ;; (reasonml :variables reason-auto-refmt t)
      (haskell :variables haskell-completion-backend 'dante)
      ;; (fsharp :variables fsharp-backend 'lsp)
+     (python :variables python-backend 'anaconda)
      graphviz
-     ;; lsp
+     lsp
      markdown
      html
      yaml
      systemd
      ;; racket
      multiple-cursors
-     (javascript :variables javascript-repl `nodejs)
+     (javascript :variables
+                 javascript-repl 'nodejs
+                 javascript-backend 'lsp)
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
-     ;; spell-checking
+     spell-checking
      syntax-checking
      ;; version-control
      ;; treemacs
@@ -578,6 +586,7 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (add-to-list 'load-path "/home/dam/.emacs.d/private/local/emacs-lfe/")
 )
 
 
@@ -597,6 +606,7 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   ;; (add-hook 'clojure-mode-hook #'fira-code-mode)
   (setq frame-resize-pixelwise t)
+  ;; (require 'emacs-lfe)
 )
 
 
@@ -612,17 +622,19 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(cider-test-show-report-on-success t)
  '(clojure-align-binding-forms
-   '("let" "when-let" "when-some" "if-let" "if-some" "binding" "loop" "doseq" "for" "with-open" "with-local-vars" "with-redefs"))
- '(clojure-defun-indents '(let-flow))
+   '("let" "when-let" "when-some" "if-let" "if-some" "binding" "loop" "doseq" "for" "with-open" "with-local-vars" "with-redefs" "m/match" "defn-spec"))
+ '(clojure-align-cond-forms
+   '("condp" "cond" "cond->" "cond->>" "case" "are" "clojure.core/condp" "clojure.core/cond" "clojure.core/cond->" "clojure.core/cond->>" "clojure.core/case" "clojure.test/are" "defn-spec"))
+ '(clojure-defun-indents
+   '(let-flow if-not-let as->> future-with match or-join defn-spec $ defui =>))
  '(clojure-indent-style 'align-arguments)
  '(clojure-toplevel-inside-comment-form t)
  '(compilation-message-face 'default)
  '(confirm-kill-emacs 'y-or-n-p)
  '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-color "#3C3D37")
- '(helm-completion-style 'emacs t)
+ '(helm-completion-style 'emacs)
  '(highlight-changes-colors '("#FD5FF0" "#AE81FF"))
  '(highlight-tail-colors
    '(("#3C3D37" . 0)
@@ -639,11 +651,26 @@ This function is called at the very end of Spacemacs initialization."
  '(lsp-ui-sideline-enable nil t)
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
-   '(tern toml-mode ron-mode racer helm-gtags ggtags flycheck-rust dap-mode lsp-treemacs bui treemacs cfrs pfuture posframe counsel-gtags counsel swiper ivy cargo rust-mode csv-mode yasnippet-snippets ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree toc-org tagedit symon symbol-overlay string-inflection spaceline-all-the-icons smeargle slim-mode scss-mode sayid sass-mode restart-emacs rainbow-delimiters pug-mode prettier-js popwin persp-mode pcre2el password-generator paradox overseer org-superstar open-junk-file nodejs-repl neotree nameless move-text monokai-theme mmm-mode markdown-toc magit-svn magit-section magit-gitflow macrostep lorem-ipsum livid-mode link-hint json-navigator json-mode js2-refactor js-doc indent-guide impatient-mode hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-cider helm-c-yasnippet helm-ag graphviz-dot-mode google-translate golden-ratio gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flycheck-package flycheck-elsa flycheck-clj-kondo flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu emr emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode diminish devdocs define-word company-web company-reftex company-auctex column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu centered-cursor-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))
+   '(lfe-mode lsp-dart jsonrpc dart-mode lsp-docker tern toml-mode ron-mode racer helm-gtags ggtags flycheck-rust dap-mode lsp-treemacs bui treemacs cfrs pfuture posframe counsel-gtags counsel swiper ivy cargo rust-mode csv-mode yasnippet-snippets ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree toc-org tagedit symon symbol-overlay string-inflection spaceline-all-the-icons smeargle slim-mode scss-mode sayid sass-mode restart-emacs rainbow-delimiters pug-mode prettier-js popwin persp-mode pcre2el password-generator paradox overseer org-superstar open-junk-file nodejs-repl neotree nameless move-text monokai-theme mmm-mode markdown-toc magit-svn magit-section magit-gitflow macrostep lorem-ipsum livid-mode link-hint json-navigator json-mode js2-refactor js-doc indent-guide impatient-mode hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-cider helm-c-yasnippet helm-ag graphviz-dot-mode google-translate golden-ratio gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flycheck-package flycheck-elsa flycheck-clj-kondo flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu emr emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode diminish devdocs define-word company-web company-reftex company-auctex column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu centered-cursor-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
  '(safe-local-variable-values
-   '((cider-ns-refresh-after-fn . "graaltest.system/start")
+   '((clojure-indent-style . align-arguments)
+     (eval progn
+           (make-variable-buffer-local 'cider-jack-in-nrepl-middlewares)
+           (add-to-list 'cider-jack-in-nrepl-middlewares "chpill.sonde/dummy-nrepl-middleware")
+           (make-variable-buffer-local 'cider-jack-in-dependencies)
+           (cider-add-to-alist 'cider-jack-in-dependencies "chpill/sonde"
+                               '(("git/sha" . "8755a24a8731a842247ed77a6288726e59328ede")
+                                 ("git/url" . "https://github.com/chpill/sonde"))))
+     (eval progn
+           (setenv "HABILITATEM_ENV" "dev-local-transactor"))
+     (eval progn
+           (make-local-variable 'process-environment)
+           (setenv "HABILITATEM_ENV" "dev-local-transactor"))
+     (cider-ns-refresh-after-fn . "user/resume")
+     (cider-ns-refresh-before-fn . "user/suspend")
+     (cider-ns-refresh-after-fn . "graaltest.system/start")
      (cider-ns-refresh-before-fn . "graaltest.system/stop")
      (cider-ns-refresh-after-fn . "aoc2020.core/instrument")
      (cider-ns-refresh-after-fn . "core/instrument")
@@ -665,7 +692,6 @@ This function is called at the very end of Spacemacs initialization."
      (cider-ns-refresh-before-fn . "juxt.clip.repl/stop")))
  '(typescript-indent-level 2)
  '(undo-tree-history-directory-alist '(("." . "/tmp/emacs-undo-tree")))
- '(utop-command "opam config exec -- dune utop . -- -emacs")
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    '((20 . "#F92672")
@@ -687,6 +713,11 @@ This function is called at the very end of Spacemacs initialization."
      (340 . "#2790C3")
      (360 . "#66D9EF")))
  '(vc-annotate-very-old-color nil)
+ '(warning-suppress-types '((use-package) (emacs) (emacs)))
+ '(web-mode-code-indent-offset 2)
+ '(web-mode-css-indent-offset 2)
+ '(web-mode-markup-indent-offset 2)
+ '(web-mode-sql-indent-offset 2)
  '(weechat-color-list
    '(unspecified "#272822" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0")))
 (custom-set-faces
