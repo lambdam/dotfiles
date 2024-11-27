@@ -73,9 +73,7 @@ ZSH_THEME="ys"
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-
-# git-annex
-plugins=(git fzf)
+plugins=(git git-annex fzf rust exercism bun)
 # Add wisely, as too many plugins slow down shell startup.
 
 source $ZSH/oh-my-zsh.sh
@@ -324,3 +322,5 @@ compinit -u
 
 # zoxide - https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init zsh)"
+
+if [ -e /home/dam/.nix-profile/etc/profile.d/nix.sh ]; then . /home/dam/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
