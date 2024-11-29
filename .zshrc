@@ -73,8 +73,13 @@ ZSH_THEME="ys"
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-annex fzf rust exercism bun)
+
+# git-annex
+plugins=(git fzf docker podman virtualenv python uv)
 # Add wisely, as too many plugins slow down shell startup.
+
+# https://github.com/ohmyzsh/ohmyzsh/issues/11789
+zstyle ':omz:plugins:docker' legacy-completion yes
 
 source $ZSH/oh-my-zsh.sh
 
