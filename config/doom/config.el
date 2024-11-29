@@ -92,7 +92,7 @@
 ;; ---
 
 (after! smartparens
-  (add-hook 'clojure-mode-hook #'smartparens-strict-mode))
+  (add-hook 'clojure-mode-hook #'turn-on-smartparens-strict-mode))
 
 ;; https://clojureverse.org/t/doom-cider-keybindings/7762/5
 ;; mapping part of the Spacemacs lisp key map:
@@ -100,19 +100,25 @@
 ;; https://rameezkhan.me/adding-keybindings-to-doom-emacs/
 (map! :leader
       (:prefix-map ("k" . "smartparens-mode")
-        :desc "forward slurp" "s" #'sp-forward-slurp-sexp
-        :desc "backward slurp" "S" #'sp-backward-slurp-sexp
-        :desc "forward barf" "b" #'sp-forward-barf-sexp
-        :desc "backward barf" "B" #'sp-backward-barf-sexp
-        :desc "raise" "r" #'sp-raise-sexp
-        :desc "unwrap & kill after" "e" #'sp-unwrap-sexp
-        :desc "unwrap & kill before" "E" #'sp-backward-unwrap-sexp
-        :desc "transpose" "t" #'sp-transpose-sexp
-        ;; :desc "sp-forward-sexp" "L" #'sp-forward-sexp
-        ;; :desc "sp-backward-sexp" "H" #'sp-backward-sexp
-        ;; "C-M-u" #'sp-backward-up-sexp
-        ;; "C-M-d" #'sp-down-sexp
-        ;; "C-M-p" #'sp-backward-down-sexp
-        ;; "C-M-n" #'sp-up-sexp
-        ;; "C-M-s" #'sp-splice-sexp
-        ))
+       :desc "forward slurp" "s" #'sp-forward-slurp-sexp
+       :desc "backward slurp" "S" #'sp-backward-slurp-sexp
+       :desc "forward barf" "b" #'sp-forward-barf-sexp
+       :desc "backward barf" "B" #'sp-backward-barf-sexp
+       :desc "raise" "r" #'sp-raise-sexp
+       :desc "unwrap & kill after" "e" #'sp-unwrap-sexp
+       :desc "unwrap & kill before" "E" #'sp-backward-unwrap-sexp
+       :desc "transpose" "t" #'sp-transpose-sexp
+       ;; :desc "sp-forward-sexp" "L" #'sp-forward-sexp
+       ;; :desc "sp-backward-sexp" "H" #'sp-backward-sexp
+       ;; "C-M-u" #'sp-backward-up-sexp
+       ;; "C-M-d" #'sp-down-sexp
+       ;; "C-M-p" #'sp-backward-down-sexp
+       ;; "C-M-n" #'sp-up-sexp
+       ;; "C-M-s" #'sp-splice-sexp
+       ))
+
+(after! which-key
+  (setq which-key-idle-delay 0.5))
+
+(map! :leader
+      (:desc "expand region" "v" #'er/expand-region))
