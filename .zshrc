@@ -111,7 +111,8 @@ export EDITOR=nvim
 ################################################################################
 
 # General
-alias ll="ls -halF"
+# alias ll="ls -halF"
+alias ll="eza --long --icons=auto --all"
 alias processus='ps -e -o"pid ppid user ucomm"'
 alias ls-executables="whence -pm '*'"
 alias cp-follow-symlinks="cp -RL"
@@ -196,6 +197,9 @@ alias touchpadFix='synclient Touchpadoff=0 ; synclient HorizTwoFingerScroll=1; s
 # Neovide
 alias nv=neovide
 alias y=yazi
+
+# bat
+alias batt="bat --paging=always"
 
 ################################################################################
 # Per program
