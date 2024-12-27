@@ -291,7 +291,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font or prioritized list of fonts. The `:size' can be specified as
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
-   dotspacemacs-default-font '("Fira Code"
+   dotspacemacs-default-font '("FiraCode Nerd Font"
                                :size 12.0
                                :weight normal
                                :width normal)
@@ -369,6 +369,10 @@ It should only modify the values of Spacemacs settings."
    ;; Which-key frame position. Possible values are `right', `bottom' and
    ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
    ;; right; if there is insufficient space it displays it at the bottom.
+   ;; It is also possible to use a posframe with the following cons cell
+   ;; `(posframe . position)' where position can be one of `center',
+   ;; `top-center', `bottom-center', `top-left-corner', `top-right-corner',
+   ;; `top-right-corner', `bottom-left-corner' or `bottom-right-corner'
    ;; (default 'bottom)
    dotspacemacs-which-key-position 'bottom
 
@@ -378,6 +382,22 @@ It should only modify the values of Spacemacs settings."
    ;; displays the buffer in a same-purpose window even if the buffer can be
    ;; displayed in the current window. (default nil)
    dotspacemacs-switch-to-buffer-prefers-purpose nil
+
+   ;; Whether side windows (such as those created by treemacs or neotree)
+   ;; are kept or minimized by `spacemacs/toggle-maximize-window' (SPC w m).
+   ;; (default t)
+   dotspacemacs-maximize-window-keep-side-windows t
+
+   ;; If nil, no load-hints enabled. If t, enable the `load-hints' which will
+   ;; put the most likely path on the top of `load-path' to reduce walking
+   ;; through the whole `load-path'. It's an experimental feature to speedup
+   ;; Spacemacs on Windows. Refer the FAQ.org "load-hints" session for details.
+   dotspacemacs-enable-load-hints nil
+
+   ;; If t, enable the `package-quickstart' feature to avoid full package
+   ;; loading, otherwise no `package-quickstart' attemption (default nil).
+   ;; Refer the FAQ.org "package-quickstart" section for details.
+   dotspacemacs-enable-package-quickstart nil
 
    ;; If non-nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
@@ -500,6 +520,13 @@ It should only modify the values of Spacemacs settings."
    ;; (default '("rg" "ag" "pt" "ack" "grep"))
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
 
+   ;; The backend used for undo/redo functionality. Possible values are
+   ;; `undo-fu', `undo-redo' and `undo-tree' see also `evil-undo-system'.
+   ;; Note that saved undo history does not get transferred when changing
+   ;; your undo system. The default is currently `undo-fu' as `undo-tree'
+   ;; is not maintained anymore and `undo-redo' is very basic."
+   dotspacemacs-undo-system 'undo-fu
+
    ;; Format specification for setting the frame title.
    ;; %a - the `abbreviated-file-name', or `buffer-name'
    ;; %t - `projectile-project-name'
@@ -535,6 +562,9 @@ It should only modify the values of Spacemacs settings."
    ;; to aggressively delete empty line and long sequences of whitespace,
    ;; `trailing' to delete only the whitespace at end of lines, `changed' to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
+   ;; The variable `global-spacemacs-whitespace-cleanup-modes' controls
+   ;; which major modes have whitespace cleanup enabled or disabled
+   ;; by default.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
 
@@ -578,7 +608,7 @@ default it calls `spacemacs/load-spacemacs-env' which loads the environment
 variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
   (spacemacs/load-spacemacs-env)
-)
+  )
 
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
@@ -587,7 +617,7 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (add-to-list 'load-path "/home/dam/.emacs.d/private/local/emacs-lfe/")
-)
+  )
 
 
 (defun dotspacemacs/user-load ()
@@ -595,7 +625,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
-)
+  )
 
 
 (defun dotspacemacs/user-config ()
@@ -607,7 +637,7 @@ before packages are loaded."
   ;; (add-hook 'clojure-mode-hook #'fira-code-mode)
   (setq frame-resize-pixelwise t)
   ;; (require 'emacs-lfe)
-)
+  )
 
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -617,114 +647,114 @@ before packages are loaded."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(clojure-align-binding-forms
-   '("let" "when-let" "when-some" "if-let" "if-some" "binding" "loop" "doseq" "for" "with-open" "with-local-vars" "with-redefs" "m/match" "defn-spec"))
- '(clojure-align-cond-forms
-   '("condp" "cond" "cond->" "cond->>" "case" "are" "clojure.core/condp" "clojure.core/cond" "clojure.core/cond->" "clojure.core/cond->>" "clojure.core/case" "clojure.test/are" "defn-spec"))
- '(clojure-defun-indents
-   '(let-flow if-not-let as->> future-with match or-join defn-spec $ defui =>))
- '(clojure-indent-style 'align-arguments)
- '(clojure-toplevel-inside-comment-form t)
- '(compilation-message-face 'default)
- '(confirm-kill-emacs 'y-or-n-p)
- '(evil-want-Y-yank-to-eol nil)
- '(fci-rule-color "#3C3D37")
- '(helm-completion-style 'emacs)
- '(highlight-changes-colors '("#FD5FF0" "#AE81FF"))
- '(highlight-tail-colors
-   '(("#3C3D37" . 0)
-     ("#679A01" . 20)
-     ("#4BBEAE" . 30)
-     ("#1DB4D0" . 50)
-     ("#9A8F21" . 60)
-     ("#A75B00" . 70)
-     ("#F309DF" . 85)
-     ("#3C3D37" . 100)))
- '(js-indent-level 2)
- '(lsp-ui-doc-enable nil t)
- '(lsp-ui-peek-enable t)
- '(lsp-ui-sideline-enable nil t)
- '(magit-diff-use-overlays nil)
- '(package-selected-packages
-   '(lfe-mode lsp-dart jsonrpc dart-mode lsp-docker tern toml-mode ron-mode racer helm-gtags ggtags flycheck-rust dap-mode lsp-treemacs bui treemacs cfrs pfuture posframe counsel-gtags counsel swiper ivy cargo rust-mode csv-mode yasnippet-snippets ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree toc-org tagedit symon symbol-overlay string-inflection spaceline-all-the-icons smeargle slim-mode scss-mode sayid sass-mode restart-emacs rainbow-delimiters pug-mode prettier-js popwin persp-mode pcre2el password-generator paradox overseer org-superstar open-junk-file nodejs-repl neotree nameless move-text monokai-theme mmm-mode markdown-toc magit-svn magit-section magit-gitflow macrostep lorem-ipsum livid-mode link-hint json-navigator json-mode js2-refactor js-doc indent-guide impatient-mode hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-cider helm-c-yasnippet helm-ag graphviz-dot-mode google-translate golden-ratio gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flycheck-package flycheck-elsa flycheck-clj-kondo flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu emr emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode diminish devdocs define-word company-web company-reftex company-auctex column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu centered-cursor-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))
- '(pos-tip-background-color "#FFFACE")
- '(pos-tip-foreground-color "#272822")
- '(safe-local-variable-values
-   '((clojure-indent-style . align-arguments)
-     (eval progn
-           (make-variable-buffer-local 'cider-jack-in-nrepl-middlewares)
-           (add-to-list 'cider-jack-in-nrepl-middlewares "chpill.sonde/dummy-nrepl-middleware")
-           (make-variable-buffer-local 'cider-jack-in-dependencies)
-           (cider-add-to-alist 'cider-jack-in-dependencies "chpill/sonde"
-                               '(("git/sha" . "8755a24a8731a842247ed77a6288726e59328ede")
-                                 ("git/url" . "https://github.com/chpill/sonde"))))
-     (eval progn
-           (setenv "HABILITATEM_ENV" "dev-local-transactor"))
-     (eval progn
-           (make-local-variable 'process-environment)
-           (setenv "HABILITATEM_ENV" "dev-local-transactor"))
-     (cider-ns-refresh-after-fn . "user/resume")
-     (cider-ns-refresh-before-fn . "user/suspend")
-     (cider-ns-refresh-after-fn . "graaltest.system/start")
-     (cider-ns-refresh-before-fn . "graaltest.system/stop")
-     (cider-ns-refresh-after-fn . "aoc2020.core/instrument")
-     (cider-ns-refresh-after-fn . "core/instrument")
-     (cider-clojure-cli-global-options . "-A:dev:cljs")
-     (cider-default-cljs-repl . custom)
-     (eval progn
-           (make-variable-buffer-local 'cider-jack-in-nrepl-middlewares)
-           (add-to-list 'cider-jack-in-nrepl-middlewares "shadow.cljs.devtools.server.nrepl/middleware"))
-     (cider-ns-refresh-after-fn . "dev/resume-system")
-     (cider-ns-refresh-before-fn . "dev/suspend-system")
-     (cider-ns-refresh-after-fn . "integrant.repl/resume")
-     (cider-ns-refresh-before-fn . "integrant.repl/suspend")
-     (cider-ns-refresh-after-fn . "dev/resume")
-     (cider-ns-refresh-before-fn . "dev/suspend")
-     (cider-clojure-cli-global-options . "-A:dev")
-     (cider-ns-refresh-after-fn . "user/start")
-     (cider-ns-refresh-before-fn . "user/stop")
-     (cider-ns-refresh-after-fn . "juxt.clip.repl/start")
-     (cider-ns-refresh-before-fn . "juxt.clip.repl/stop")))
- '(typescript-indent-level 2)
- '(undo-tree-history-directory-alist '(("." . "/tmp/emacs-undo-tree")))
- '(vc-annotate-background nil)
- '(vc-annotate-color-map
-   '((20 . "#F92672")
-     (40 . "#CF4F1F")
-     (60 . "#C26C0F")
-     (80 . "#E6DB74")
-     (100 . "#AB8C00")
-     (120 . "#A18F00")
-     (140 . "#989200")
-     (160 . "#8E9500")
-     (180 . "#A6E22E")
-     (200 . "#729A1E")
-     (220 . "#609C3C")
-     (240 . "#4E9D5B")
-     (260 . "#3C9F79")
-     (280 . "#A1EFE4")
-     (300 . "#299BA6")
-     (320 . "#2896B5")
-     (340 . "#2790C3")
-     (360 . "#66D9EF")))
- '(vc-annotate-very-old-color nil)
- '(warning-suppress-types '((use-package) (emacs) (emacs)))
- '(web-mode-code-indent-offset 2)
- '(web-mode-css-indent-offset 2)
- '(web-mode-markup-indent-offset 2)
- '(web-mode-sql-indent-offset 2)
- '(weechat-color-list
-   '(unspecified "#272822" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0")))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(highlight-parentheses-highlight ((nil (:weight ultra-bold))) t)
- '(merlin-type-face ((t (:inherit caml-types-expr-face :background "gray35")))))
-)
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(clojure-align-binding-forms
+     '("let" "when-let" "when-some" "if-let" "if-some" "binding" "loop" "doseq" "for" "with-open" "with-local-vars" "with-redefs" "m/match" "defn-spec"))
+   '(clojure-align-cond-forms
+     '("condp" "cond" "cond->" "cond->>" "case" "are" "clojure.core/condp" "clojure.core/cond" "clojure.core/cond->" "clojure.core/cond->>" "clojure.core/case" "clojure.test/are" "defn-spec"))
+   '(clojure-defun-indents
+     '(let-flow if-not-let as->> future-with match or-join defn-spec $ defui =>))
+   '(clojure-indent-style 'align-arguments)
+   '(clojure-toplevel-inside-comment-form t)
+   '(compilation-message-face 'default)
+   '(confirm-kill-emacs 'y-or-n-p)
+   '(evil-want-Y-yank-to-eol nil)
+   '(fci-rule-color "#3C3D37")
+   '(helm-completion-style 'emacs)
+   '(highlight-changes-colors '("#FD5FF0" "#AE81FF"))
+   '(highlight-tail-colors
+     '(("#3C3D37" . 0)
+       ("#679A01" . 20)
+       ("#4BBEAE" . 30)
+       ("#1DB4D0" . 50)
+       ("#9A8F21" . 60)
+       ("#A75B00" . 70)
+       ("#F309DF" . 85)
+       ("#3C3D37" . 100)))
+   '(js-indent-level 2)
+   '(lsp-ui-doc-enable nil t)
+   '(lsp-ui-peek-enable t)
+   '(lsp-ui-sideline-enable nil t)
+   '(magit-diff-use-overlays nil)
+   '(package-selected-packages
+     '(lfe-mode lsp-dart jsonrpc dart-mode lsp-docker tern toml-mode ron-mode racer helm-gtags ggtags flycheck-rust dap-mode lsp-treemacs bui treemacs cfrs pfuture posframe counsel-gtags counsel swiper ivy cargo rust-mode csv-mode yasnippet-snippets ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree toc-org tagedit symon symbol-overlay string-inflection spaceline-all-the-icons smeargle slim-mode scss-mode sayid sass-mode restart-emacs rainbow-delimiters pug-mode prettier-js popwin persp-mode pcre2el password-generator paradox overseer org-superstar open-junk-file nodejs-repl neotree nameless move-text monokai-theme mmm-mode markdown-toc magit-svn magit-section magit-gitflow macrostep lorem-ipsum livid-mode link-hint json-navigator json-mode js2-refactor js-doc indent-guide impatient-mode hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-cider helm-c-yasnippet helm-ag graphviz-dot-mode google-translate golden-ratio gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flycheck-package flycheck-elsa flycheck-clj-kondo flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu emr emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode diminish devdocs define-word company-web company-reftex company-auctex column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu centered-cursor-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))
+   '(pos-tip-background-color "#FFFACE")
+   '(pos-tip-foreground-color "#272822")
+   '(safe-local-variable-values
+     '((clojure-indent-style . align-arguments)
+       (eval progn
+             (make-variable-buffer-local 'cider-jack-in-nrepl-middlewares)
+             (add-to-list 'cider-jack-in-nrepl-middlewares "chpill.sonde/dummy-nrepl-middleware")
+             (make-variable-buffer-local 'cider-jack-in-dependencies)
+             (cider-add-to-alist 'cider-jack-in-dependencies "chpill/sonde"
+                                 '(("git/sha" . "8755a24a8731a842247ed77a6288726e59328ede")
+                                   ("git/url" . "https://github.com/chpill/sonde"))))
+       (eval progn
+             (setenv "HABILITATEM_ENV" "dev-local-transactor"))
+       (eval progn
+             (make-local-variable 'process-environment)
+             (setenv "HABILITATEM_ENV" "dev-local-transactor"))
+       (cider-ns-refresh-after-fn . "user/resume")
+       (cider-ns-refresh-before-fn . "user/suspend")
+       (cider-ns-refresh-after-fn . "graaltest.system/start")
+       (cider-ns-refresh-before-fn . "graaltest.system/stop")
+       (cider-ns-refresh-after-fn . "aoc2020.core/instrument")
+       (cider-ns-refresh-after-fn . "core/instrument")
+       (cider-clojure-cli-global-options . "-A:dev:cljs")
+       (cider-default-cljs-repl . custom)
+       (eval progn
+             (make-variable-buffer-local 'cider-jack-in-nrepl-middlewares)
+             (add-to-list 'cider-jack-in-nrepl-middlewares "shadow.cljs.devtools.server.nrepl/middleware"))
+       (cider-ns-refresh-after-fn . "dev/resume-system")
+       (cider-ns-refresh-before-fn . "dev/suspend-system")
+       (cider-ns-refresh-after-fn . "integrant.repl/resume")
+       (cider-ns-refresh-before-fn . "integrant.repl/suspend")
+       (cider-ns-refresh-after-fn . "dev/resume")
+       (cider-ns-refresh-before-fn . "dev/suspend")
+       (cider-clojure-cli-global-options . "-A:dev")
+       (cider-ns-refresh-after-fn . "user/start")
+       (cider-ns-refresh-before-fn . "user/stop")
+       (cider-ns-refresh-after-fn . "juxt.clip.repl/start")
+       (cider-ns-refresh-before-fn . "juxt.clip.repl/stop")))
+   '(typescript-indent-level 2)
+   '(undo-tree-history-directory-alist '(("." . "/tmp/emacs-undo-tree")))
+   '(vc-annotate-background nil)
+   '(vc-annotate-color-map
+     '((20 . "#F92672")
+       (40 . "#CF4F1F")
+       (60 . "#C26C0F")
+       (80 . "#E6DB74")
+       (100 . "#AB8C00")
+       (120 . "#A18F00")
+       (140 . "#989200")
+       (160 . "#8E9500")
+       (180 . "#A6E22E")
+       (200 . "#729A1E")
+       (220 . "#609C3C")
+       (240 . "#4E9D5B")
+       (260 . "#3C9F79")
+       (280 . "#A1EFE4")
+       (300 . "#299BA6")
+       (320 . "#2896B5")
+       (340 . "#2790C3")
+       (360 . "#66D9EF")))
+   '(vc-annotate-very-old-color nil)
+   '(warning-suppress-types '((use-package) (emacs) (emacs)))
+   '(web-mode-code-indent-offset 2)
+   '(web-mode-css-indent-offset 2)
+   '(web-mode-markup-indent-offset 2)
+   '(web-mode-sql-indent-offset 2)
+   '(weechat-color-list
+     '(unspecified "#272822" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0")))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(highlight-parentheses-highlight ((nil (:weight ultra-bold))) t)
+   '(merlin-type-face ((t (:inherit caml-types-expr-face :background "gray35")))))
+  )
