@@ -127,6 +127,8 @@ alias vlcc="vlc -I ncurses"
 # Emacs
 alias gemacs='emacsclient -c -n -a "" -F "((fullscreen . maximized))"'
 alias temacs="emacs --no-window-system"
+alias doomemacs="emacs --with-profile doom"
+alias temacsdoom="emacs --no-window-system --with-profile doom"
 
 # Radios
 alias radio-france-inter="mplayer -playlist http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u"
@@ -200,6 +202,9 @@ alias y=yazi
 
 # bat
 alias batt="bat --paging=always"
+
+# nvim read only
+alias v="nvim -R"
 
 ################################################################################
 # Per program
