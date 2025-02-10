@@ -44,15 +44,14 @@ This function should only modify configuration layer settings."
      emacs-lisp
      org
      julia
-     rust
-     csv
-     git
+     ;; rust
+     ;; csv
+     ;; git
      helm
-     latex
-     (typescript :variables
-                 typescript-backend 'lsp)
-     nginx
-     erlang
+     ;; latex
+     ;; (typescript :variables typescript-backend 'lsp)
+     ;; nginx
+     ;; erlang
      (clojure :variables
               ;; clojure-enable-linters '(clj-kondo joker)
               clojure-enable-linters 'clj-kondo
@@ -60,24 +59,25 @@ This function should only modify configuration layer settings."
               ;; clojure-backend 'lsp
               ;; clojure-enable-sayid t
               clojure-enable-clj-refactor t)
-     (scheme :variables scheme-implementations '(chez guile))
-     common-lisp
+     ;; (scheme :variables scheme-implementations '(chez guile))
+     ;; common-lisp
      (ocaml :variables ocaml-format-on-save t)
      ;; (reasonml :variables reason-auto-refmt t)
-     (haskell :variables haskell-completion-backend 'dante)
+     ;; (haskell :variables haskell-completion-backend 'dante)
      ;; (fsharp :variables fsharp-backend 'lsp)
-     (python :variables python-backend 'anaconda)
-     graphviz
-     lsp
+     ;; (python :variables python-backend 'anaconda)
+     ;; graphviz
+     ;; lsp
      markdown
      html
-     yaml
-     systemd
+     ;; yaml
+     ;; systemd
      ;; racket
      multiple-cursors
      (javascript :variables
                  javascript-repl 'nodejs
-                 javascript-backend 'lsp)
+                 ;; javascript-backend 'lsp
+                 )
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -97,7 +97,7 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(html-to-hiccup ag rg fira-code-mode)
+   dotspacemacs-additional-packages '(html-to-hiccup rg)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -144,14 +144,6 @@ It should only modify the values of Spacemacs settings."
    ;;   ./emacs --dump-file=$HOME/.emacs.d/.cache/dumps/spacemacs-27.1.pdmp
    ;; (default (format "spacemacs-%s.pdmp" emacs-version))
    dotspacemacs-emacs-dumper-dump-file (format "spacemacs-%s.pdmp" emacs-version)
-
-   ;; If non-nil ELPA repositories are contacted via HTTPS whenever it's
-   ;; possible. Set it to nil if you have no way to use HTTPS in your
-   ;; environment, otherwise it is strongly recommended to let it set to t.
-   ;; This variable has no effect if Emacs is launched with the parameter
-   ;; `--insecure' which forces the value of this variable to nil.
-   ;; (default t)
-   dotspacemacs-elpa-https t
 
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    ;; (default 5)
@@ -288,7 +280,9 @@ It should only modify the values of Spacemacs settings."
    ;; (default t)
    dotspacemacs-colorize-cursor-according-to-state t
 
-   ;; Default font or prioritized list of fonts. The `:size' can be specified as
+   ;; Default font or prioritized list of fonts. This setting has no effect when
+   ;; running Emacs in terminal. The font set here will be used for default and
+   ;; fixed-pitch faces. The `:size' can be specified as
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
    dotspacemacs-default-font '("FiraCode Nerd Font"
@@ -616,7 +610,7 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  (add-to-list 'load-path "/home/dam/.emacs.d/private/local/emacs-lfe/")
+  ;; (add-to-list 'load-path "/home/dam/.emacs.d/private/local/emacs-lfe/")
   )
 
 
@@ -676,9 +670,10 @@ This function is called at the very end of Spacemacs initialization."
        ("#F309DF" . 85)
        ("#3C3D37" . 100)))
    '(js-indent-level 2)
-   '(lsp-ui-doc-enable nil t)
+   '(julia-indent-offset 2)
+   '(lsp-ui-doc-enable nil)
    '(lsp-ui-peek-enable t)
-   '(lsp-ui-sideline-enable nil t)
+   '(lsp-ui-sideline-enable nil)
    '(magit-diff-use-overlays nil)
    '(package-selected-packages
      '(lfe-mode lsp-dart jsonrpc dart-mode lsp-docker tern toml-mode ron-mode racer helm-gtags ggtags flycheck-rust dap-mode lsp-treemacs bui treemacs cfrs pfuture posframe counsel-gtags counsel swiper ivy cargo rust-mode csv-mode yasnippet-snippets ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree toc-org tagedit symon symbol-overlay string-inflection spaceline-all-the-icons smeargle slim-mode scss-mode sayid sass-mode restart-emacs rainbow-delimiters pug-mode prettier-js popwin persp-mode pcre2el password-generator paradox overseer org-superstar open-junk-file nodejs-repl neotree nameless move-text monokai-theme mmm-mode markdown-toc magit-svn magit-section magit-gitflow macrostep lorem-ipsum livid-mode link-hint json-navigator json-mode js2-refactor js-doc indent-guide impatient-mode hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-cider helm-c-yasnippet helm-ag graphviz-dot-mode google-translate golden-ratio gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flycheck-package flycheck-elsa flycheck-clj-kondo flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu emr emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode diminish devdocs define-word company-web company-reftex company-auctex column-enforce-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu centered-cursor-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))
