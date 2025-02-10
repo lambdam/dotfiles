@@ -19,16 +19,7 @@ ocaml-opam:
 # Emacs
 
 save-doom-directory:
-	tar -cf ${HOME}/.emacs.d.doom.$(shell date -I).tar.zst --use-compress-program="zstd -T6" ${HOME}/.emacs.d.doom
-
-switch-to-doom-emacs:
-	rm -f ${HOME}/.emacs.d
-	ln -s ${HOME}/.emacs.d.doom ~/.emacs.d
+	cd ~/.config && tar -cf emacs.doom.$(shell date -I).tar.zst --use-compress-program="zstd -T6" emacs.doom
 
 save-spacemacs-directory:
-	tar -cf ${HOME}/.emacs.d.spacemacs.$(shell date -I).tar.zst --use-compress-program="zstd -T6" ${HOME}/.emacs.d.spacemacs
-
-switch-to-spacemacs:
-	rm -f ${HOME}/.emacs.d
-	ln -s ${HOME}/.emacs.d.spacemacs ~/.emacs.d
-
+	cd ~/.config && tar -cf emacs.spacemacs.$(shell date -I).tar.zst --use-compress-program="zstd -T6" emacs.spacemacs
