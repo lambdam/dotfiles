@@ -82,6 +82,8 @@
       doom-localleader-key "," ;; easier than <SPC m>
       )
 
+(setq-default show-trailing-whitespace t)
+
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (use-package! lsp-mode
@@ -98,27 +100,29 @@
 ;; mapping part of the Spacemacs lisp key map:
 ;; https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.org#editing-lisp-code
 ;; https://rameezkhan.me/adding-keybindings-to-doom-emacs/
-(map! :leader
-      (:prefix-map ("k" . "smartparens-mode")
-       :desc "forward slurp" "s" #'sp-forward-slurp-sexp
-       :desc "backward slurp" "S" #'sp-backward-slurp-sexp
-       :desc "forward barf" "b" #'sp-forward-barf-sexp
-       :desc "backward barf" "B" #'sp-backward-barf-sexp
-       :desc "raise" "r" #'sp-raise-sexp
-       :desc "unwrap & kill after" "e" #'sp-unwrap-sexp
-       :desc "unwrap & kill before" "E" #'sp-backward-unwrap-sexp
-       :desc "transpose" "t" #'sp-transpose-sexp
-       ;; :desc "sp-forward-sexp" "L" #'sp-forward-sexp
-       ;; :desc "sp-backward-sexp" "H" #'sp-backward-sexp
-       ;; "C-M-u" #'sp-backward-up-sexp
-       ;; "C-M-d" #'sp-down-sexp
-       ;; "C-M-p" #'sp-backward-down-sexp
-       ;; "C-M-n" #'sp-up-sexp
-       ;; "C-M-s" #'sp-splice-sexp
-       ))
+(map!
+ :leader
+ (:prefix-map ("k" . "smartparens-mode")
+  :desc "forward slurp" "s" #'sp-forward-slurp-sexp
+  :desc "backward slurp" "S" #'sp-backward-slurp-sexp
+  :desc "forward barf" "b" #'sp-forward-barf-sexp
+  :desc "backward barf" "B" #'sp-backward-barf-sexp
+  :desc "raise" "r" #'sp-raise-sexp
+  :desc "unwrap & kill after" "e" #'sp-unwrap-sexp
+  :desc "unwrap & kill before" "E" #'sp-backward-unwrap-sexp
+  :desc "transpose" "t" #'sp-transpose-sexp
+  ;; :desc "sp-forward-sexp" "L" #'sp-forward-sexp
+  ;; :desc "sp-backward-sexp" "H" #'sp-backward-sexp
+  ;; "C-M-u" #'sp-backward-up-sexp
+  ;; "C-M-d" #'sp-down-sexp
+  ;; "C-M-p" #'sp-backward-down-sexp
+  ;; "C-M-n" #'sp-up-sexp
+  ;; "C-M-s" #'sp-splice-sexp
+  ))
 
 (after! which-key
-  (setq which-key-idle-delay 0.5))
+  (setq which-key-idle-delay 0.3))
 
-(map! :leader
-      (:desc "expand region" "v" #'er/expand-region))
+(map!
+ :leader
+ (:desc "expand region" "v" #'er/expand-region))

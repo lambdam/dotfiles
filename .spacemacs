@@ -43,7 +43,7 @@ This function should only modify configuration layer settings."
      ;; better-defaults
      emacs-lisp
      org
-     julia
+     (julia :variables julia-backend 'lsp)
      ;; rust
      ;; csv
      ;; git
@@ -65,7 +65,7 @@ This function should only modify configuration layer settings."
      ;; (reasonml :variables reason-auto-refmt t)
      ;; (haskell :variables haskell-completion-backend 'dante)
      ;; (fsharp :variables fsharp-backend 'lsp)
-     ;; (python :variables python-backend 'anaconda)
+     (python :variables python-backend 'anaconda)
      ;; graphviz
      ;; lsp
      markdown
@@ -97,7 +97,7 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(html-to-hiccup rg)
+   dotspacemacs-additional-packages '(html-to-hiccup rg fennel-mode)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -286,7 +286,7 @@ It should only modify the values of Spacemacs settings."
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
    dotspacemacs-default-font '("FiraCode Nerd Font"
-                               :size 12.0
+                               :size 13.0
                                :weight normal
                                :width normal)
 
